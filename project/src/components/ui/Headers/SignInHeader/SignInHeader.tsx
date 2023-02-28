@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserPageHeader = () => {
+const SignInHeader = () => {
   return (
     <header className="page-header user-page__head">
       <div className="logo">
@@ -16,4 +16,4 @@ const UserPageHeader = () => {
   );
 };
 
-export default UserPageHeader;
+export default SignInHeader;

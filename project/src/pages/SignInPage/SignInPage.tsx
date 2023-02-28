@@ -1,16 +1,16 @@
 import React from 'react';
 import Footer from "../../components/ui/Footer/Footer";
-import UserPageHeader from "../../components/ui/UserPageHeader/UserPageHeader";
+import SignInHeader from "../../components/ui/Headers/SignInHeader/SignInHeader";
 import SignInForm from "../../components/ui/SignInForm/SignInForm";
 
-const MyList = () => {
+const SignInPage = () => {
   return (
     <div className="user-page">
-      <UserPageHeader />
+      <SignInHeader />
       <SignInForm />
       <Footer />
     </div>
   );
 };
 
-export default MyList;
+export default SignInPage;
