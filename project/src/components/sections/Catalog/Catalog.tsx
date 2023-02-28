@@ -1,44 +1,18 @@
 import React from 'react';
-import CatalogGenresList from "../../CatalogGenresList/CatalogGenresList";
-import FilmCard from "../../FilmCard/FilmCard";
+import CatalogGenresList from '../../CatalogGenresList/CatalogGenresList';
+import CatalogFilmsList from '../../CatalogFilmsList/CatalogFilmsList';
 
+const MOCK_LENGTH = 20;
 
-
-const Catalog = () => {
-  return (
-    <section className="catalog">
-      <h2 className="catalog__title visually-hidden">Catalog</h2>
-      <CatalogGenresList />
-
-      <div className="catalog__films-list">
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-      <FilmCard />
-
-      </div>
-
-      <div className="catalog__more">
-        <button className="catalog__button" type="button">Show more</button>
-      </div>
-    </section>
-  );
-};
+const Catalog = () => (
+  <section className="catalog">
+    <h2 className="catalog__title visually-hidden">Catalog</h2>
+    <CatalogGenresList />
+    <CatalogFilmsList lengthList={MOCK_LENGTH} />
+    <div className="catalog__more">
+      <button className="catalog__button" type="button">Show more</button>
+    </div>
+  </section>
+);
 
 export default Catalog;

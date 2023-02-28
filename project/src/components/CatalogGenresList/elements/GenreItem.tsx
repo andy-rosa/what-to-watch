@@ -1,8 +1,8 @@
 import React from 'react';
 
 export interface GenreItemProps {
-  children: string
-  isActive?: boolean
+  children: string;
+  isActive?: boolean;
 }
 
 const GenreItem = (props: GenreItemProps) => {

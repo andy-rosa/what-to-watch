@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from "../../Headers/Header";
+import Header from '../../Headers/Header';
 
 export interface MainFilmCardProps {
-  title: string
-  genre: string
-  year: number
+  title: string;
+  genre: string;
+  year: number;
 }
 
 const MainFilmCard = (props: MainFilmCardProps) => {
@@ -12,7 +12,7 @@ const MainFilmCard = (props: MainFilmCardProps) => {
     title,
     genre,
     year
-  } = props
+  } = props;
 
   return (
     <section className="film-card">
@@ -28,7 +28,8 @@ const MainFilmCard = (props: MainFilmCardProps) => {
         <div className="film-card__info">
           <div className="film-card__poster">
             <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218"
-                 height="327"/>
+              height="327"
+            />
           </div>
 
           <div className="film-card__desc">

@@ -1,10 +1,8 @@
 import React from 'react';
-import Player from "../../components/Player/Player";
+import Player from '../../components/Player/Player';
 
-const PlayerPage = () => {
-  return (
+const PlayerPage = () => (
   <Player />
-  );
-};
+);
 
 export default PlayerPage;

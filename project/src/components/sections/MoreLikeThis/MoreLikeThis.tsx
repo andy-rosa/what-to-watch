@@ -1,19 +1,13 @@
 import React from 'react';
-import FilmCard from "../../FilmCard/FilmCard";
+import CatalogFilmsList from '../../CatalogFilmsList/CatalogFilmsList';
 
-const MoreLikeThis = () => {
-  return (
-    <section className="catalog catalog--like-this">
-      <h2 className="catalog__title">More like this</h2>
+const MOCK_LENGTH = 4;
 
-      <div className="catalog__films-list">
-        <FilmCard />
-        <FilmCard />
-        <FilmCard />
-        <FilmCard />
-      </div>
-    </section>
-  );
-};
+const MoreLikeThis = () => (
+  <section className="catalog catalog--like-this">
+    <h2 className="catalog__title">More like this</h2>
+    <CatalogFilmsList lengthList={MOCK_LENGTH} />
+  </section>
+);
 
 export default MoreLikeThis;

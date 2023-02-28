@@ -1,15 +1,13 @@
 import React, {ReactNode} from 'react';
 
 export interface TitleHeaderProps {
-  children?: ReactNode
+  children?: ReactNode;
 }
 
-const TitleHeader = ({children}: TitleHeaderProps ) => {
-  return (
-    <h1 className="page-title user-page__title">
-      {children}
-    </h1>
-  );
-};
+const TitleHeader = ({children}: TitleHeaderProps ) => (
+  <h1 className="page-title user-page__title">
+    {children}
+  </h1>
+);
 
 export default TitleHeader;

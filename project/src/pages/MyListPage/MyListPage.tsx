@@ -1,30 +1,19 @@
 import React from 'react';
-import Footer from "../../components/Footer/Footer";
-import FilmCard from "../../components/FilmCard/FilmCard";
-import Header from "../../components/Headers/Header";
+import Footer from '../../components/Footer/Footer';
+import Header from '../../components/Headers/Header';
+import CatalogFilmsList from '../../components/CatalogFilmsList/CatalogFilmsList';
 
-const MyListPage = () => {
-  return (
-    <div className="user-page">
-      <Header>My list <span className="user-page__film-count">9</span></Header>
-      <section className="catalog">
-        <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <div className="catalog__films-list">
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-        </div>
-      </section>
+const MOCK_LENGTH = 9;
 
-      <Footer />
-    </div>
-  );
-};
+const MyListPage = () => (
+  <div className="user-page">
+    <Header>My list <span className="user-page__film-count">9</span></Header>
+    <section className="catalog">
+      <h2 className="catalog__title visually-hidden">Catalog</h2>
+      <CatalogFilmsList lengthList={MOCK_LENGTH} />
+    </section>
+    <Footer />
+  </div>
+);
 
 export default MyListPage;
