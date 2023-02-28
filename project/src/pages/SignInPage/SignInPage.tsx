@@ -1,12 +1,12 @@
 import React from 'react';
-import Footer from "../../components/ui/Footer/Footer";
-import SignInHeader from "../../components/ui/Headers/SignInHeader/SignInHeader";
-import SignInForm from "../../components/ui/SignInForm/SignInForm";
+import Footer from "../../components/Footer/Footer";
+import SignInForm from "../../components/SignInForm/SignInForm";
+import Header from "../../components/Headers/Header";
 
 const SignInPage = () => {
   return (
     <div className="user-page">
-      <SignInHeader />
+      <Header isUserBlock={false}>Sign in</Header>
       <SignInForm />
       <Footer />
     </div>

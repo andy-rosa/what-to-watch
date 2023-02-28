@@ -1,6 +1,6 @@
 import React from 'react';
-import CatalogGenresList from "../../ui/CatalogGenresList/CatalogGenresList";
-import FilmCard from "../../ui/FilmCard/FilmCard";
+import CatalogGenresList from "../../CatalogGenresList/CatalogGenresList";
+import FilmCard from "../../FilmCard/FilmCard";
 
 
 

@@ -13,7 +13,7 @@ const GenreItem = (props: GenreItemProps) => {
 
   return (
     <li className={`catalog__genres-item ${ isActive ? 'catalog__genres-item--active' : ''}`} >
-      <a href="#" className="catalog__genres-link">{children}</a>
+      <a href="project/src/components/CatalogGenresList/elements#" className="catalog__genres-link">{children}</a>
     </li>
   );
 };
