@@ -14,7 +14,7 @@ const Header = ({ children, isUserBlock = true, isShowBreadcrumb = false }: Head
   return (
     <header className="page-header user-page__head">
       <LogoHeader />
-      { children == null
+      { children
         ? <TitleHeader>{children}</TitleHeader>
         : <></>
       }

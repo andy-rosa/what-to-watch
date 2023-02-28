@@ -5,16 +5,11 @@ export interface TitleHeaderProps {
 }
 
 const TitleHeader = ({children}: TitleHeaderProps ) => {
-  switch (children) {
-    case true:
-      return (
-        <h1 className="page-title user-page__title">
-          {children}
-        </h1>
-      );
-    default:
-      return <></>
-  }
+  return (
+    <h1 className="page-title user-page__title">
+      {children}
+    </h1>
+  );
 };
 
 export default TitleHeader;
