@@ -1,6 +1,6 @@
 import React from 'react';
-import CatalogGenresList from '../../CatalogGenresList/CatalogGenresList';
-import CatalogFilmsList from '../../CatalogFilmsList/CatalogFilmsList';
+import CatalogGenresList from '../../Catalogs/CatalogGenresList/CatalogGenresList';
+import CatalogFilmsList from '../../Catalogs/CatalogFilmsList/CatalogFilmsList';
 
 const MOCK_LENGTH = 20;
 

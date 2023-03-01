@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Headers/Header';
-import CatalogFilmsList from '../../components/CatalogFilmsList/CatalogFilmsList';
+import CatalogFilmsList from '../../components/Catalogs/CatalogFilmsList/CatalogFilmsList';
 
 const MOCK_LENGTH = 9;
 

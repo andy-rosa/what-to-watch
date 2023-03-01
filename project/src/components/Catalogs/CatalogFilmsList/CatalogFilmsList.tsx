@@ -1,5 +1,5 @@
 import React from 'react';
-import FilmCard from '../FilmCard/FilmCard';
+import FilmCard from '../../FilmCard/FilmCard';
 
 export interface CatalogFilmsListProps {
   lengthList: number;

@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+.btnBack {
+width: 500px;
+}
+
+.supportText {
+  font-size: 30px;
+  line-height: 36px;
+  color: #dfcf77;
+  font-weight: 300;
+  margin-bottom: 120px;
+}
