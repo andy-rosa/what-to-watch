@@ -1,10 +1,6 @@
-import React, {ReactNode} from 'react';
+import React, {PropsWithChildren} from 'react';
 
-export interface TitleHeaderProps {
-  children?: ReactNode;
-}
-
-const TitleHeader = ({children}: TitleHeaderProps ) => (
+const TitleHeader = ({children}: PropsWithChildren ) => (
   <h1 className="page-title user-page__title">
     {children}
   </h1>
