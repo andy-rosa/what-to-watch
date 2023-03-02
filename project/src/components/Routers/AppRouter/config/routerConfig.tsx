@@ -6,7 +6,7 @@ import PlayerPage from '../../../../pages/PlayerPage/PlayerPage';
 import SignInPage from '../../../../pages/SignInPage/SignInPage';
 import AddReviewPage from '../../../../pages/AddReviewPage/AddReviewPage';
 import NotFoundPage from '../../../../pages/NotFoundPage/NotFoundPage';
-import PrivateRoute, {AuthorizationStatus} from '../../PrivetRouter/PrivetRouter';
+import PrivateRoute, {AuthorizationStatus} from '../../PrivateRouter/PrivateRouter';
 
 export enum AppRoute {
   MAIN = 'main',
@@ -31,7 +31,7 @@ export const RoutePath: Record<AppRoute, string> = {
 
 export const routeConfig: RouteObject[] = [
   {
-    path: RoutePath.main,
+    index: true,
     element: < MainPage />
   },
   {
