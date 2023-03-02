@@ -1,21 +1,14 @@
 import React from 'react';
 
 export interface GenreItemProps {
-  children: string;
+  name: string;
   isActive?: boolean;
 }
 
-const GenreItem = (props: GenreItemProps) => {
-  const {
-    children,
-    isActive = false
-  } = props;
-
-  return (
-    <li className={`catalog__genres-item ${ isActive ? 'catalog__genres-item--active' : ''}`} >
-      <a href="project/src/components/CatalogGenresList/elements#" className="catalog__genres-link">{children}</a>
-    </li>
-  );
-};
+const GenreItem = ({name, isActive = false}: GenreItemProps) => (
+  <li className={`catalog__genres-item ${ isActive ? 'catalog__genres-item--active' : ''}`} >
+    <a href="project/src/components/CatalogGenresList/elements#" className="catalog__genres-link">{name}</a>
+  </li>
+);
 
 export default GenreItem;

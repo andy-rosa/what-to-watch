@@ -3,16 +3,16 @@ import GenreItem from './elements/GenreItem';
 
 const CatalogGenresList = (): JSX.Element => (
   <ul className="catalog__genres-list">
-    <GenreItem isActive >All genres</GenreItem>
-    <GenreItem >Comedies</GenreItem>
-    <GenreItem >Crime</GenreItem>
-    <GenreItem >Documentary</GenreItem>
-    <GenreItem >Dramas</GenreItem>
-    <GenreItem >Horror</GenreItem>
-    <GenreItem >Kids & Family</GenreItem>
-    <GenreItem >Romance</GenreItem>
-    <GenreItem >Sci-Fi</GenreItem>
-    <GenreItem >Thrillers</GenreItem>
+    <GenreItem isActive name={'All genres'} />
+    <GenreItem name={'Comedies'} />
+    <GenreItem name={'Crime'} />
+    <GenreItem name={'Documentary'} />
+    <GenreItem name={'Dramas'} />
+    <GenreItem name={'Horror'} />
+    <GenreItem name={'Kids & Family'} />
+    <GenreItem name={'Romance'} />
+    <GenreItem name={'Sci-Fi'} />
+    <GenreItem name={'Thrillers'} />
   </ul>
 );
 

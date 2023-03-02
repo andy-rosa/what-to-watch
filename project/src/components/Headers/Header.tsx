@@ -13,10 +13,7 @@ export interface HeaderProps {
 const Header = ({ children, isUserBlock = true, isShowBreadcrumb = false }: HeaderProps) => (
   <header className="page-header user-page__head">
     <LogoHeader />
-    { children
-      ? <TitleHeader>{children}</TitleHeader>
-      : null }
-
+    { children && <TitleHeader>{children}</TitleHeader> }
     { isShowBreadcrumb && <BreadcrumbsHeader /> }
     { isUserBlock && <UserBlockHeader /> }
   </header>
