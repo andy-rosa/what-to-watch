@@ -1,4 +1,3 @@
-import MainPage from '../../pages/MainPage/ui/MainPage';
 import {RouterProvider} from 'react-router-dom';
 import {router} from '../Routers/AppRouter/AppRouter';
 import {Suspense} from 'react';
