@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../../components/Headers/Header';
-import AddReviewForm from '../../components/Forms/AddReviewForm/AddReviewForm';
+import Header from '../../../components/Headers/Header';
+import AddReviewForm from '../../../components/Forms/AddReviewForm/AddReviewForm';
 
 const AddReviewPage = () => (
   <section className="film-card film-card--full">

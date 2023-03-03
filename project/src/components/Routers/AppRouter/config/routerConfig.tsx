@@ -1,12 +1,12 @@
 import {RouteObject} from 'react-router-dom';
-import MainPage from '../../../../pages/MainPage/MainPage';
-import FilmPage from '../../../../pages/FilmPage/FilmPage';
-import MyListPage from '../../../../pages/MyListPage/MyListPage';
-import PlayerPage from '../../../../pages/PlayerPage/PlayerPage';
-import SignInPage from '../../../../pages/SignInPage/SignInPage';
-import AddReviewPage from '../../../../pages/AddReviewPage/AddReviewPage';
-import NotFoundPage from '../../../../pages/NotFoundPage/NotFoundPage';
 import PrivateRoute, {AuthorizationStatus} from '../../PrivateRouter/PrivateRouter';
+import { SignInPage } from '../../../../pages/SignInPage';
+import { FilmPage } from '../../../../pages/FilmPage';
+import { PlayerPage } from '../../../../pages/PlayerPage';
+import { AddReviewPage } from '../../../../pages/AddReviewPage';
+import { MyListPage } from '../../../../pages/MyListPage';
+import { MainPage } from '../../../../pages/MainPage';
+import { NotFoundPage } from '../../../../pages/NotFoundPage';
 
 export enum AppRoute {
   MAIN = 'main',

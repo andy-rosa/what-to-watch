@@ -1,7 +1,7 @@
 import React from 'react';
-import MainFilmCard from '../../components/sections/MainFilmCard/MainFilmCard';
-import Catalog from '../../components/sections/Catalog/Catalog';
-import Footer from '../../components/Footer/Footer';
+import MainFilmCard from '../../../components/sections/MainFilmCard/MainFilmCard';
+import Catalog from '../../../components/sections/Catalog/Catalog';
+import Footer from '../../../components/Footer/Footer';
 
 const MainPage = (): JSX.Element => (
   <div>
