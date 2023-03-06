@@ -1,5 +1,7 @@
 import React from 'react';
 import Header from '../../Headers/Header';
+import {Link} from 'react-router-dom';
+import {RoutePath} from '../../Routers/AppRouter/config/routerConfig';
 
 const FilmCardFull = () => (
   <section className="film-card film-card--full">
@@ -34,7 +36,9 @@ const FilmCardFull = () => (
               <span>My list</span>
               <span className="film-card__count">9</span>
             </button>
-            <a href="add-review.html" className="btn film-card__button">Add review</a>
+            <Link to={RoutePath.add_review} className={'btn film-card__button'} >
+              Add review
+            </Link>
           </div>
         </div>
       </div>
