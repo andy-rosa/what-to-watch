@@ -1,20 +1,33 @@
-import React from 'react';
-import FilmCard from '../../FilmCard/FilmCard';
+import React, {useEffect, useState} from 'react';
+import FilmCard, {FilmCardProps} from '../../FilmCard/FilmCard';
+import axios from 'axios';
+import {Films} from '../../../mocks/films';
 
-export interface CatalogFilmsListProps {
-  lengthList: number;
+export type CatalogFilmsListProps = {
+  url: string;
 }
 
-const CatalogFilmsList = ({lengthList}: CatalogFilmsListProps) => {
-  const mockFilms = Array.from({length: lengthList});
+const CatalogFilmsList = ({url}: CatalogFilmsListProps) => {
+  const [films, setFilms] = useState<Films[] | null>(null);
+
+  useEffect( () => {
+    axios.get<Films[]>(url)
+      .then((result) =>
+        setFilms(result.data)
+      );
+  },[films]);
 
   return (
     <div className="catalog__films-list">
       {
-        mockFilms.map(
-          // eslint-disable-next-line react/no-array-index-key
-          (_, key) => <FilmCard key={key} />
-        )
+        films && films.map(
+          ({posterImage, id, name}: FilmCardProps) => (
+            <FilmCard
+              key={id}
+              id={id}
+              name={name}
+              posterImage={posterImage}
+            />))
       }
     </div>
   );

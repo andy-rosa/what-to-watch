@@ -18,7 +18,7 @@ function PrivateRoute(props: PrivateRouteProps) {
   return (
     authorizationStatus === AuthorizationStatus.Auth
       ? children
-      : <Navigate to={RoutePath.sign_in} />
+      : <Navigate to={RoutePath.sign_in} replace/>
   );
 }
 
