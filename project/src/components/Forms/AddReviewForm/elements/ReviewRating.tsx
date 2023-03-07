@@ -1,6 +1,6 @@
 import React from 'react';
 import ReviewRatingItem from './ReviewRatingItem';
-import {EvtFormProps, FormProps} from '../AddReviewForm';
+import {EvtFormProps} from '../AddReviewForm';
 
 const MAX_RATING = 10;
 

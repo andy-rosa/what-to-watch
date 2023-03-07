@@ -11,6 +11,7 @@ const FilmCardFull = () => {
   const [film, setFilm] = useState<Films | null>(null);
   const { id } = useParams();
 
+
   useEffect( () => {
     axios.get<Films>(`https://12.react.pages.academy/wtw/films/${id as string}`)
       .then((res) => setFilm(res.data)

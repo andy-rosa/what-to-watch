@@ -10,15 +10,12 @@ const PlayerPage = () => {
 
   useEffect( () => {
     axios.get<Films>(`https://12.react.pages.academy/wtw/films/${id as string}`)
-      .then((res) => {
-        console.log(res.data);
-        return setPlayer(res.data);
-      }
+      .then((res) => setPlayer(res.data)
       );
   },[ id ]);
 
   if (!player) {
-    return <></>;
+    return <div></div>;
   }
 
   return (
