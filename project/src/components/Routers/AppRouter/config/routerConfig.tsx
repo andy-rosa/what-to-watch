@@ -5,8 +5,8 @@ import { FilmPage } from '../../../../pages/FilmPage';
 import { PlayerPage } from '../../../../pages/PlayerPage';
 import { AddReviewPage } from '../../../../pages/AddReviewPage';
 import { MyListPage } from '../../../../pages/MyListPage';
-import { MainPage } from '../../../../pages/MainPage';
 import { NotFoundPage } from '../../../../pages/NotFoundPage';
+import {MainPage} from '../../../../pages/MainPage';
 
 export enum AppRoute {
   MAIN = 'main',
@@ -41,7 +41,7 @@ export const routeConfig: RouteObject[] = [
   {
     path: RoutePath.my_list,
     element:
-      <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth} >
+      <PrivateRoute authorizationStatus={AuthorizationStatus.Auth} >
         < MyListPage />
       </PrivateRoute>
   },
@@ -56,7 +56,7 @@ export const routeConfig: RouteObject[] = [
   {
     path: RoutePath.add_review,
     element:
-      <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth} >
+      <PrivateRoute authorizationStatus={AuthorizationStatus.Auth} >
         < AddReviewPage />
       </PrivateRoute>
   },

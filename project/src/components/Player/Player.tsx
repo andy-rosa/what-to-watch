@@ -1,17 +1,25 @@
 import React from 'react';
 import ButtonPlayer from './elements/ButtonPlayer';
 import TimePlayer from './elements/TimePlayer';
+import {Films} from '../../mocks/films';
+import {useNavigate} from 'react-router-dom';
 
-const Player = () => (
-  <div className="player">
-    <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
-    <button type="button" className="player__exit">Exit</button>
+export type PlayerProps = 'videoLink' | 'previewImage' ;
 
-    <div className="player__controls">
-      <TimePlayer />
-      <ButtonPlayer />
+const Player = ({videoLink, previewImage}: Pick<Films, PlayerProps>) => {
+  const navigate = useNavigate();
+
+  return (
+    <div className="player">
+      <video src={videoLink} className="player__video" poster={previewImage}></video>
+      <button type="button" className="player__exit" onClick={() => navigate(-1)}>Exit</button>
+
+      <div className="player__controls">
+        <TimePlayer/>
+        <ButtonPlayer/>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Player;

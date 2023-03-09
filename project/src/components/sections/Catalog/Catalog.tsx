@@ -2,13 +2,11 @@ import React from 'react';
 import CatalogGenresList from '../../Catalogs/CatalogGenresList/CatalogGenresList';
 import CatalogFilmsList from '../../Catalogs/CatalogFilmsList/CatalogFilmsList';
 
-const MOCK_LENGTH = 20;
-
 const Catalog = () => (
   <section className="catalog">
     <h2 className="catalog__title visually-hidden">Catalog</h2>
     <CatalogGenresList />
-    <CatalogFilmsList lengthList={MOCK_LENGTH} />
+    <CatalogFilmsList url={'https://12.react.pages.academy/wtw/films'}/>
     <div className="catalog__more">
       <button className="catalog__button" type="button">Show more</button>
     </div>

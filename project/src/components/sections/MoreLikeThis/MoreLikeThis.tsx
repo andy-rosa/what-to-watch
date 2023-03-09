@@ -1,12 +1,14 @@
 import React from 'react';
 import CatalogFilmsList from '../../Catalogs/CatalogFilmsList/CatalogFilmsList';
 
-const MOCK_LENGTH = 4;
+export type MoreLikeThisProps = {
+  id: string;
+}
 
-const MoreLikeThis = () => (
+const MoreLikeThis = ({id}: MoreLikeThisProps) => (
   <section className="catalog catalog--like-this">
     <h2 className="catalog__title">More like this</h2>
-    <CatalogFilmsList lengthList={MOCK_LENGTH} />
+    <CatalogFilmsList url={`https://12.react.pages.academy/wtw/films/${id}/similar`}/>
   </section>
 );
 
