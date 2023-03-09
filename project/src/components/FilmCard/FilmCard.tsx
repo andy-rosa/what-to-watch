@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {Films} from '../../mocks/films';
+import cls from './FilmsCard.module.css';
 
 export type FilmCardProps = Pick<Films, 'name' | 'posterImage' | 'id' >
 
@@ -9,11 +10,11 @@ const FilmCard = ({name, posterImage, id}: FilmCardProps): JSX.Element => {
   const [ isActive, setIsActive] = useState<null | number>(null);
 
   const mouseOverHandler = () => {
-    setIsActive(null);
+    setIsActive(id);
   };
 
   const mouseOutHandler = () => {
-    setIsActive(id);
+    setIsActive(null);
   };
 
   return (
@@ -24,7 +25,7 @@ const FilmCard = ({name, posterImage, id}: FilmCardProps): JSX.Element => {
     >
       <Link
         to={`/films/${id}`}
-        style={{textDecoration: 'none', color: '#dfcf77'}}
+        className={cls.wrapper}
       >
         <div className="small-film-card__image">
           <img src={posterImage}

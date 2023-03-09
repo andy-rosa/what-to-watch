@@ -14,7 +14,7 @@ export type FormProps = {
   'review-text': string;
 }
 
-const AddReviewForm = () => {
+const AddReviewForm = (): JSX.Element => {
   const [form, setForm] = useState<FormProps>({
     'rating': '',
     'review-text': '',

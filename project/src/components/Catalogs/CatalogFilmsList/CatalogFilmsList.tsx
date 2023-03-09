@@ -8,19 +8,19 @@ export type CatalogFilmsListProps = {
 }
 
 const CatalogFilmsList = ({url}: CatalogFilmsListProps) => {
-  const [films, setFilms] = useState<Films[] | null>(null);
+  const [films, setFilms] = useState<Films[]>([]);
 
   useEffect( () => {
     axios.get<Films[]>(url)
       .then((result) =>
         setFilms(result.data)
       );
-  },[films]);
+  },[films, url]);
 
   return (
     <div className="catalog__films-list">
       {
-        films && films.map(
+        films.map(
           ({posterImage, id, name}: FilmCardProps) => (
             <FilmCard
               key={id}

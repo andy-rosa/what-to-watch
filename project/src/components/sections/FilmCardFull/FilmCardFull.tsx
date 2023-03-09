@@ -64,11 +64,7 @@ const FilmCardFull = () => {
   };
 
   return (
-    <div>
-      {
-        film && buildFilmFullCard()
-      }
-    </div>
+    buildFilmFullCard()
   );
 
 };

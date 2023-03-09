@@ -6,18 +6,18 @@ import {Films} from '../../../../mocks/films';
 const BreadcrumbsHeader = () => {
   const location = useLocation();
   const id = location.pathname.split('/')[2];
-  const [breadcrum, setBreadcrum] = useState<string | null>(null);
+  const [breadcrumb, setBreadcrumb] = useState<string>('');
 
   useEffect(() => {
     axios.get<Films>(`https://12.react.pages.academy/wtw/films/${id}`)
-      .then((res) => setBreadcrum(res.data.name));
+      .then((res) => setBreadcrumb(res.data.name));
   },[id]);
 
   return (
     <nav className="breadcrumbs">
       <ul className="breadcrumbs__list">
         <li className="breadcrumbs__item">
-          <Link to={`/films/${id}`} className="breadcrumbs__link">{breadcrum}</Link>
+          <Link to={`/films/${id}`} className="breadcrumbs__link">{breadcrumb}</Link>
         </li>
         <li className="breadcrumbs__item">
           <a className="breadcrumbs__link">Add review</a>

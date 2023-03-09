@@ -1,9 +1,9 @@
 import React from 'react';
 import {Films} from '../../../../mocks/films';
 
-export type FilmCardDescProps = 'rating' | 'scoresCount'
+export type FilmCardRatingProps = 'rating' | 'scoresCount'
 
-const FilmCardRating = ({rating, scoresCount}: Pick<Films, FilmCardDescProps>) => (
+const FilmCardRating = ({rating, scoresCount}: Pick<Films, FilmCardRatingProps>) => (
   <div className="film-rating">
     <div className="film-rating__score">{rating}</div>
     <p className="film-rating__meta">
