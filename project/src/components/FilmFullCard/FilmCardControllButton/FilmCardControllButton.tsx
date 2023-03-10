@@ -1,11 +1,11 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {generatePath, Link} from 'react-router-dom';
 import {RoutePath} from '../../Routers/AppRouter/config/routerConfig';
 import {Films} from '../../../mocks/films';
 
 const FilmCardButton = ({id}: Pick<Films, 'id'>) => (
   <div className="film-card__buttons">
-    <Link to={`/player/${id}`} className="btn btn--play film-card__button" >
+    <Link to={generatePath(RoutePath.player, {id})} className="btn btn--play film-card__button" >
       <svg viewBox="0 0 19 19" width="19" height="19">
         <use xlinkHref="#play-s"></use>
       </svg>

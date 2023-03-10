@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {generatePath, Link} from 'react-router-dom';
 import {Films} from '../../mocks/films';
 import cls from './FilmsCard.module.css';
+import {RoutePath} from '../Routers/AppRouter/config/routerConfig';
 
 export type FilmCardProps = Pick<Films, 'name' | 'posterImage' | 'id' >
 
@@ -24,7 +25,7 @@ const FilmCard = ({name, posterImage, id}: FilmCardProps): JSX.Element => {
       onMouseOut={mouseOutHandler}
     >
       <Link
-        to={`/films/${id}`}
+        to={generatePath(RoutePath.film, {id})}
         className={cls.wrapper}
       >
         <div className="small-film-card__image">
