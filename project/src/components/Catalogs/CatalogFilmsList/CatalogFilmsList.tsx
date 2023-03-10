@@ -31,12 +31,13 @@ const CatalogFilmsList = ({url}: CatalogFilmsListProps) => {
     <div className="catalog__films-list">
       {
         getFilmCard().map(
-          ({posterImage, id, name}: FilmCardProps) => (
+          ({posterImage, id, name, videoLink}: FilmCardProps) => (
             <FilmCard
               key={id}
               id={id}
               name={name}
               posterImage={posterImage}
+              videoLink={videoLink}
             />))
       }
     </div>
