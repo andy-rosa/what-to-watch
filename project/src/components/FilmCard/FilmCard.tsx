@@ -9,10 +9,8 @@ import CardPoster from './elements/CardPoster';
 export type FilmCardProps = Pick<Films, 'name' | 'posterImage' | 'id' | 'videoLink' >
 
 const FilmCard = ({name, posterImage, id, videoLink}: FilmCardProps): JSX.Element => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [ isActive, setIsActive] = useState<null | number>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  console.log(videoRef);
 
   const mouseOverHandler = () => {
     setIsActive(id);
