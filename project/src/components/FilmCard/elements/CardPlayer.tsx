@@ -9,10 +9,11 @@ const CardPlayer = ({videoLink, posterImage}: Pick<FilmCardProps, 'videoLink' | 
   useEffect(() => {
     setTimeout(() => {
       if (videoRef.current) {
+        videoRef.current.volume = 0;
         videoRef.current.play();
       }
     }, STANDARD_DELAY);
-  });
+  },[]);
 
   return (
     <div className="small-film-card__image">

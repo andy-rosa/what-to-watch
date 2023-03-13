@@ -1,16 +1,14 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useState } from 'react';
 import {generatePath, Link} from 'react-router-dom';
 import {Films} from '../../mocks/films';
 import cls from './FilmsCard.module.css';
 import {RoutePath} from '../Routers/AppRouter/config/routerConfig';
-import CardPlayer from './elements/CardPlayer';
-import CardPoster from './elements/CardPoster';
+import CardToggle from './elements/CardToggle';
 
 export type FilmCardProps = Pick<Films, 'name' | 'posterImage' | 'id' | 'videoLink' >
 
 const FilmCard = ({name, posterImage, id, videoLink}: FilmCardProps): JSX.Element => {
   const [ isActive, setIsActive] = useState<null | number>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   const mouseOverHandler = () => {
     setIsActive(id);
@@ -19,17 +17,6 @@ const FilmCard = ({name, posterImage, id, videoLink}: FilmCardProps): JSX.Elemen
   const mouseOutHandler = () => {
     setIsActive(null);
   };
-
-  useEffect(() => {
-    if (isActive) {
-      setTimeout(() => {
-        if (videoRef.current) {
-          videoRef.current.play();
-
-        }
-      }, 1000);
-    }
-  });
 
   return (
     <article
@@ -41,11 +28,12 @@ const FilmCard = ({name, posterImage, id, videoLink}: FilmCardProps): JSX.Elemen
         to={generatePath(RoutePath.film, {id})}
         className={cls.wrapper}
       >
-        {
-          isActive
-            ? < CardPlayer videoLink={videoLink} posterImage={posterImage}/>
-            : < CardPoster name={name} posterImage={posterImage} />
-        }
+        <CardToggle
+          isActive={isActive}
+          videoLink={videoLink}
+          posterImage={posterImage}
+          name={name}
+        />
       </Link>
     </article>
 
