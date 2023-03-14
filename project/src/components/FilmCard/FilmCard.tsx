@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import {generatePath, Link} from 'react-router-dom';
 import {Films} from '../../mocks/films';
 import cls from './FilmsCard.module.css';
+import {RoutePath} from '../Routers/AppRouter/config/routerConfig';
+import CardToggle from './elements/CardToggle';
 
-export type FilmCardProps = Pick<Films, 'name' | 'posterImage' | 'id' >
+export type FilmCardProps = Pick<Films, 'name' | 'posterImage' | 'id' | 'videoLink' >
 
-const FilmCard = ({name, posterImage, id}: FilmCardProps): JSX.Element => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+const FilmCard = ({name, posterImage, id, videoLink}: FilmCardProps): JSX.Element => {
   const [ isActive, setIsActive] = useState<null | number>(null);
 
   const mouseOverHandler = () => {
@@ -24,19 +25,15 @@ const FilmCard = ({name, posterImage, id}: FilmCardProps): JSX.Element => {
       onMouseOut={mouseOutHandler}
     >
       <Link
-        to={`/films/${id}`}
+        to={generatePath(RoutePath.film, {id})}
         className={cls.wrapper}
       >
-        <div className="small-film-card__image">
-          <img src={posterImage}
-            alt={name} width="280" height="175"
-          />
-        </div>
-        <h3 className="small-film-card__title">
-          <span className={'small-film-card__link'}>
-            {name}
-          </span>
-        </h3>
+        <CardToggle
+          isActive={isActive}
+          videoLink={videoLink}
+          posterImage={posterImage}
+          name={name}
+        />
       </Link>
     </article>
 
