@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 import { filmsData } from './mocks/films';
 import { reviewsData } from './mocks/reviews';
-import StoreProvider from './store/StoreProvider/StoreProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
