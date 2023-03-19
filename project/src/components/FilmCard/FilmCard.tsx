@@ -10,19 +10,19 @@ export type FilmCardProps = Pick<Films, 'name' | 'posterImage' | 'id' | 'videoLi
 const FilmCard = ({name, posterImage, id, videoLink}: FilmCardProps): JSX.Element => {
   const [ isActive, setIsActive] = useState<boolean>(false);
 
-  const mouseOverHandler = () => {
+  const handleMouseOver = () => {
     setIsActive(true);
   };
 
-  const mouseOutHandler = () => {
+  const handleMouseOut = () => {
     setIsActive(false);
   };
 
   return (
     <article
       className="small-film-card catalog__films-card"
-      onMouseOver={mouseOverHandler}
-      onMouseOut={mouseOutHandler}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
     >
       <Link
         to={generatePath(RoutePath.film, {id})}
