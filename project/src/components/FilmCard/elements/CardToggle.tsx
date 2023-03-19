@@ -3,7 +3,7 @@ import CardPlayer from './CardPlayer';
 import CardPoster from './CardPoster';
 
 type CardToggleProps = {
-  isActive: null | number;
+  isActive: boolean;
   videoLink: string;
   posterImage: string;
   name: string;

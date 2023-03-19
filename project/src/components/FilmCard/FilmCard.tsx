@@ -8,14 +8,14 @@ import CardToggle from './elements/CardToggle';
 export type FilmCardProps = Pick<Films, 'name' | 'posterImage' | 'id' | 'videoLink' >
 
 const FilmCard = ({name, posterImage, id, videoLink}: FilmCardProps): JSX.Element => {
-  const [ isActive, setIsActive] = useState<null | number>(null);
+  const [ isActive, setIsActive] = useState<boolean>(false);
 
   const mouseOverHandler = () => {
-    setIsActive(id);
+    setIsActive(true);
   };
 
   const mouseOutHandler = () => {
-    setIsActive(null);
+    setIsActive(false);
   };
 
   return (

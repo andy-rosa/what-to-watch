@@ -5,14 +5,17 @@ const STANDARD_DELAY = 1000;
 
 const CardPlayer = ({videoLink, posterImage}: Pick<FilmCardProps, 'videoLink' | 'posterImage'>) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const timerRef = useRef();
 
   useEffect(() => {
-    setTimeout(() => {
+    // @ts-ignore
+    timerRef.current = setTimeout(() => {
       if (videoRef.current) {
         videoRef.current.volume = 0;
         videoRef.current.play();
       }
     }, STANDARD_DELAY);
+    return () => clearTimeout(timerRef.current);
   },[]);
 
   return (
