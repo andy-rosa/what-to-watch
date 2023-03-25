@@ -18,7 +18,11 @@ const GenreItem = ({name}: GenreItemProps) => {
   };
 
   return (
-    <li className={`catalog__genres-item ${activeGenre === name ? 'catalog__genres-item--active' : ''}`}>
+    <li className={`catalog__genres-item ${
+      activeGenre === name
+        ? 'catalog__genres-item--active'
+        : ''}`}
+    >
       <a
         onClick={changeGenreHandler}
         href="project/src/components/CatalogGenresList/elements#"

@@ -1,19 +1,17 @@
 import React from 'react';
 import GenreItem from './elements/GenreItem';
+import {GenreName} from '../../../store/Genre/model/types/genreSchema';
 
 const CatalogGenresList = (): JSX.Element => (
   <ul className="catalog__genres-list">
-    <GenreItem name={'All genres'}/>
-    <GenreItem name={'Comedies'}/>
-    <GenreItem name={'Crime'}/>
-    <GenreItem name={'Documentary'}/>
-    <GenreItem name={'Dramas'}/>
-    <GenreItem name={'Horror'}/>
-    <GenreItem name={'Kids & Family'}/>
-    <GenreItem name={'Romance'}/>
-    <GenreItem name={'Sci-Fi'}/>
-    <GenreItem name={'Thrillers'}/>
+    {
+      (Object.values(GenreName)).map(
+        (genre) =>
+          <GenreItem name={genre} key={genre} />
+      )
+    }
   </ul>
 );
 
 export default CatalogGenresList;
+

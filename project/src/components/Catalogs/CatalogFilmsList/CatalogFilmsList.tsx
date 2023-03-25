@@ -11,6 +11,19 @@ export type CatalogFilmsListProps = {
   url: string;
 }
 
+const GenreFilter: Record<GenreName, string> = {
+  [GenreName.ALL_GENRES]: 'All genres',
+  [GenreName.COMEDIES]: 'Comedy',
+  [GenreName.CRIME]: 'Crime',
+  [GenreName.DOCUMENTARY]: 'Documentary',
+  [GenreName.DRAMAS]: 'Drama',
+  [GenreName.HORROR]: 'Horror',
+  [GenreName.KIDS_AND_FAMILY]: 'Kids & Family',
+  [GenreName.ROMANCE]: 'Romance',
+  [GenreName.SCI_FI]: 'Sci-Fi',
+  [GenreName.THRILLERS]: 'Thriller',
+};
+
 const CatalogFilmsList = ({url}: CatalogFilmsListProps) => {
   const [films, setFilms] = useState<Films[]>([]);
   const {id: idUrl} = useParams();
@@ -32,28 +45,13 @@ const CatalogFilmsList = ({url}: CatalogFilmsListProps) => {
     return filmList;
   };
 
-  const GenreFilter: Record<GenreName, string> = {
-    [GenreName.ALL_GENRES]: 'All genres',
-    [GenreName.COMEDIES]: 'Comedy',
-    [GenreName.CRIME]: 'Crime',
-    [GenreName.DOCUMENTARY]: 'Documentary',
-    [GenreName.DRAMAS]: 'Drama',
-    [GenreName.HORROR]: 'Horror',
-    [GenreName.KIDS_AND_FAMILY]: 'Kids & Family',
-    [GenreName.ROMANCE]: 'Romance',
-    [GenreName.SCI_FI]: 'Sci-Fi',
-    [GenreName.THRILLERS]: 'Thriller',
-  };
-
   return (
     <div className="catalog__films-list">
       {
-        getFilmCard().filter((film) => {
-          if (GenreFilter[activeGenre] === GenreName.ALL_GENRES) {
-            return true;
-          }
-          return film.genre === GenreFilter[activeGenre];
-        }).map(
+        getFilmCard().filter((film) => (
+          GenreFilter[activeGenre] === GenreName.ALL_GENRES
+          || (film.genre === GenreFilter[activeGenre])
+        )).map(
           ({posterImage, id, name, videoLink}: FilmCardProps) => (
             <FilmCard
               key={id}

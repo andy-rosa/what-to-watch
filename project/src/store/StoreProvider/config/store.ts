@@ -1,11 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit';
+import genreSlice from '../../Genre/model/slice/genreSlice';
 import {StateSchema} from './StateSchema';
-import {genreReducer} from '../../Genre/model/slice/genreSlice';
 
 export function createReduxStore(initialState?: StateSchema) {
   return configureStore<StateSchema>({
     reducer: {
-      genre: genreReducer
+      genre: genreSlice
     },
     preloadedState: initialState
   });
