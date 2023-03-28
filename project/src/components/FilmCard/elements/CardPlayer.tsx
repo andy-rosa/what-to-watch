@@ -1,25 +1,33 @@
 import React, {useEffect, useRef} from 'react';
 import {FilmCardProps} from '../FilmCard';
 
-const STANDARD_DELAY = 1000;
+type CardPlayerProps = Pick<FilmCardProps, 'videoLink'> & {
+  isPlaying: boolean;
+}
 
-const CardPlayer = ({videoLink, posterImage}: Pick<FilmCardProps, 'videoLink' | 'posterImage'>) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
+const CardPlayer = ({isPlaying, videoLink}: CardPlayerProps) => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      if (videoRef.current) {
-        videoRef.current.volume = 0;
-        videoRef.current.play();
-      }
-    }, STANDARD_DELAY);
-  },[]);
+    if (!videoRef.current) {
+      return;
+    }
+
+    const player = videoRef.current;
+    if (isPlaying) {
+      player.play();
+    } else {
+      player.pause();
+      player.currentTime = 0;
+    }
+  },[isPlaying]);
 
   return (
     <div className="small-film-card__image">
       <video
-        poster={posterImage}
         ref={videoRef}
+        preload="none"
+        muted
         width="280"
         height="175"
       >

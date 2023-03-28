@@ -4,6 +4,7 @@ import {Suspense} from 'react';
 import Loader from '../Loader/Loader';
 import {Films} from '../../mocks/films';
 import {Reviews} from '../../mocks/reviews';
+import StoreProvider from '../../store/StoreProvider/StoreProvider';
 
 export type AppData = {
   films: Films[];
@@ -12,9 +13,11 @@ export type AppData = {
 
 function App({films, reviews}: AppData): JSX.Element {
   return (
-    <Suspense fallback={<Loader />} >
-      <RouterProvider router={router} />
-    </Suspense>
+    <StoreProvider>
+      <Suspense fallback={<Loader />} >
+        <RouterProvider router={router} />
+      </Suspense>
+    </StoreProvider>
   );
 }
 
