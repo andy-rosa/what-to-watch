@@ -1,7 +1,7 @@
 import React from 'react';
 import ButtonPlayer from './elements/ButtonPlayer';
 import TimePlayer from './elements/TimePlayer';
-import {Films} from '../../mocks/films';
+import {Films} from '../../types/films';
 import {useNavigate} from 'react-router-dom';
 
 export type PlayerProps = 'videoLink' | 'previewImage' ;

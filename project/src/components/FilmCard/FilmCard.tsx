@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {generatePath, Link} from 'react-router-dom';
-import {Films} from '../../mocks/films';
+import {Films} from '../../types/films';
 import cls from './FilmsCard.module.css';
 import {RoutePath} from '../Routers/AppRouter/config/routerConfig';
 import CardToggle from './elements/CardToggle';

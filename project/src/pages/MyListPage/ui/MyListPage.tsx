@@ -8,7 +8,7 @@ const MyListPage = () => (
     <Header>My list <span className="user-page__film-count">9</span></Header>
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
-      <CatalogFilmsList url={'https://12.react.pages.academy/wtw/films'}/>
+      <CatalogFilmsList />
     </section>
     <Footer />
   </div>

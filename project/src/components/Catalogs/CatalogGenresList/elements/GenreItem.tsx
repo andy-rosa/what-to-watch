@@ -1,30 +1,33 @@
-import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {getGenreActiveGenre} from '../../../../store/Genre/model/selectors/getGenreActiveGenre/getGenreActiveGenre';
-import {genreActions} from '../../../../store/Genre/model/slice/genreSlice';
-import {GenreName} from '../../../../store/Genre/model/types/genreSchema';
+import React, {SyntheticEvent} from 'react';
+import {GenreName} from '../../../../types/genre';
+import {useAppDispatch} from '../../../../hooks/useAppDispatch';
+import { useAppSelector } from '../../../../hooks/useAppSelector';
+import {useSelector} from 'react-redux';
+import {getGenreSelected} from '../../../../store/Genre/selectors/getGenreSelected/getGenreSelected';
+import {genreActions} from '../../../../store/Genre/slice/genreSlice';
 
 export interface GenreItemProps {
-  name: string;
+  name: GenreName;
 }
 
 const GenreItem = ({name}: GenreItemProps) => {
-  const dispatch = useDispatch();
-  const activeGenre = useSelector(getGenreActiveGenre);
+  const dispatch = useAppDispatch();
+  const selectedGenre = useSelector(getGenreSelected);
 
-  const changeGenreHandler = (evt: { preventDefault: () => void }) => {
+  const handleClick = (evt: SyntheticEvent<HTMLAnchorElement>) => {
     evt.preventDefault();
-    dispatch(genreActions.chooseGenre(name as GenreName));
+    dispatch(genreActions.select(name));
   };
 
   return (
     <li className={`catalog__genres-item ${
-      activeGenre === name
+      selectedGenre === name
         ? 'catalog__genres-item--active'
-        : ''}`}
+        : ''
+    }`}
     >
       <a
-        onClick={changeGenreHandler}
+        onClick={handleClick}
         href="project/src/components/CatalogGenresList/elements#"
         className="catalog__genres-link"
       >

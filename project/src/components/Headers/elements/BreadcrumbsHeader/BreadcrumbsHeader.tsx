@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {generatePath, Link, useLocation} from 'react-router-dom';
 import axios from 'axios';
-import {Films} from '../../../../mocks/films';
+import {Films} from '../../../../types/films';
 import { RoutePath } from '../../../Routers/AppRouter/config/routerConfig';
 
 const BreadcrumbsHeader = () => {

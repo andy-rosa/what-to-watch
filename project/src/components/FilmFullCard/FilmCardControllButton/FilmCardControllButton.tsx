@@ -1,7 +1,7 @@
 import React from 'react';
 import {generatePath, Link} from 'react-router-dom';
 import {RoutePath} from '../../Routers/AppRouter/config/routerConfig';
-import {Films} from '../../../mocks/films';
+import {Films} from '../../../types/films';
 
 const FilmCardButton = ({id}: Pick<Films, 'id'>) => (
   <div className="film-card__buttons">

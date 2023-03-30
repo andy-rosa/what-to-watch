@@ -1,5 +1,5 @@
 import React from 'react';
-import {Films} from '../../../../mocks/films';
+import {Films} from '../../../../types/films';
 
 export type FilmCardRatingProps = 'rating' | 'scoresCount'
 

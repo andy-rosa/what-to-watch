@@ -4,7 +4,7 @@ import FilmCardDesc from '../../FilmFullCard/FilmCardDesc/FilmCardDesc';
 import FilmCardPoster from '../../FilmFullCard/FilmCardPoster/FilmCardPoster';
 import FilmCardButton from '../../FilmFullCard/FilmCardControllButton/FilmCardControllButton';
 import axios from 'axios';
-import {Films} from '../../../mocks/films';
+import {Films} from '../../../types/films';
 import {useParams} from 'react-router-dom';
 import Loader from '../../Loader/Loader';
 

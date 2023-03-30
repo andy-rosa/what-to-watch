@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import {Films} from '../../../../mocks/films';
+import {Films} from '../../../../types/films';
 
 export type FilmCardNavProps = 'id'
 
