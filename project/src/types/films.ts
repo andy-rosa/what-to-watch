@@ -22,4 +22,6 @@ export interface Films {
 
 export interface FilmsState {
   films: Films[];
+  isLoading: boolean;
+  error: string | null;
 }

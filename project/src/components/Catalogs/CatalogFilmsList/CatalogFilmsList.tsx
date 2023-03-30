@@ -6,11 +6,14 @@ import {useSelector} from 'react-redux';
 import {getFilteredFilms} from '../../../store/Films/selectors/getFilteredFilms/getFilteredFilms';
 import {fetchFilmsAction, fetchFilmsSimilarAction} from '../../../store/Films/actions/action.api';
 import {getNonRepeatFilmCard} from '../../../helpers/getNonRepeatFilmsCard';
+import Loader from '../../Loader/Loader';
+import {useAppSelector} from '../../../hooks/useAppSelector';
 
 const CatalogFilmsList = () => {
   const {id: idUrl} = useParams();
   const films = useSelector(getFilteredFilms);
   const dispatch = useAppDispatch();
+  const {isLoading} = useAppSelector((state) => state.films);
 
   useEffect(() => {
     if (idUrl) {
@@ -30,11 +33,20 @@ const CatalogFilmsList = () => {
     />
   );
 
+  const createCurrentFilmsList = () => {
+    if (idUrl) {
+      return getNonRepeatFilmCard(films, idUrl).map(createFilmCard);
+    }
+    return films.map(createFilmCard);
+  };
+
   return (
     <div className="catalog__films-list">
-      { idUrl
-        ? getNonRepeatFilmCard(films, idUrl).map(createFilmCard)
-        : films.map(createFilmCard)}
+      {
+        isLoading
+          ? <Loader />
+          : createCurrentFilmsList()
+      }
     </div>
   );
 };

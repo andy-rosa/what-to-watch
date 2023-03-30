@@ -4,6 +4,8 @@ import {fetchFilmsAction, fetchFilmsSimilarAction} from '../actions/action.api';
 
 const initialState: FilmsState = {
   films: [],
+  isLoading: false,
+  error: null
 };
 
 const filmsSlice = createSlice({
@@ -15,10 +17,20 @@ const filmsSlice = createSlice({
       .addCase(fetchFilmsAction.fulfilled,
         (state, action) => {
           state.films = action.payload;
+          state.isLoading = false;
+        })
+      .addCase(fetchFilmsAction.pending,
+        (state) => {
+          state.isLoading = true;
         })
       .addCase(fetchFilmsSimilarAction.fulfilled,
         (state, action) => {
           state.films = action.payload;
+          state.isLoading = false;
+        })
+      .addCase(fetchFilmsSimilarAction.pending,
+        (state) => {
+          state.isLoading = true;
         });
   }
 });
