@@ -1,65 +1,51 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import FilmCard, {FilmCardProps} from '../../FilmCard/FilmCard';
-import axios from 'axios';
-import {Films} from '../../../mocks/films';
 import {useParams} from 'react-router-dom';
+import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import {useSelector} from 'react-redux';
-import {getGenreActiveGenre} from '../../../store/Genre/model/selectors/getGenreActiveGenre/getGenreActiveGenre';
-import {GenreName} from '../../../store/Genre/model/types/genreSchema';
+import {getFilteredFilms} from '../../../store/Films/selectors/getFilteredFilms/getFilteredFilms';
+import {fetchFilmsAction, fetchFilmsSimilarAction} from '../../../store/Films/actions/action.api';
+import {getNonRepeatFilmCard} from '../../../helpers/getNonRepeatFilmsCard';
+import Loader from '../../Loader/Loader';
+import {useAppSelector} from '../../../hooks/useAppSelector';
 
-export type CatalogFilmsListProps = {
-  url: string;
-}
-
-const GenreFilter: Record<GenreName, string> = {
-  [GenreName.ALL_GENRES]: 'All genres',
-  [GenreName.COMEDIES]: 'Comedy',
-  [GenreName.CRIME]: 'Crime',
-  [GenreName.DOCUMENTARY]: 'Documentary',
-  [GenreName.DRAMAS]: 'Drama',
-  [GenreName.HORROR]: 'Horror',
-  [GenreName.KIDS_AND_FAMILY]: 'Kids & Family',
-  [GenreName.ROMANCE]: 'Romance',
-  [GenreName.SCI_FI]: 'Sci-Fi',
-  [GenreName.THRILLERS]: 'Thriller',
-};
-
-const CatalogFilmsList = ({url}: CatalogFilmsListProps) => {
-  const [films, setFilms] = useState<Films[]>([]);
+const CatalogFilmsList = () => {
   const {id: idUrl} = useParams();
+  const films = useSelector(getFilteredFilms);
+  const dispatch = useAppDispatch();
+  const {isLoading} = useAppSelector((state) => state.films);
 
-  const activeGenre = useSelector(getGenreActiveGenre);
-
-  useEffect( () => {
-    axios.get<Films[]>(url)
-      .then((result) =>
-        setFilms(result.data)
-      );
-  },[url]);
-
-  const getFilmCard = () => {
-    let filmList = films;
+  useEffect(() => {
     if (idUrl) {
-      filmList = filmList.filter((film) => String(film.id) !== idUrl );
+      dispatch(fetchFilmsSimilarAction(idUrl));
+    } else {
+      dispatch(fetchFilmsAction());
     }
-    return filmList;
+  },[idUrl]);
+
+  const createFilmCard = ({posterImage, id, name, videoLink}: FilmCardProps) => (
+    <FilmCard
+      key={id}
+      id={id}
+      name={name}
+      posterImage={posterImage}
+      videoLink={videoLink}
+    />
+  );
+
+  const createCurrentFilmsList = () => {
+    if (idUrl) {
+      return getNonRepeatFilmCard(films, idUrl).map(createFilmCard);
+    }
+    return films.map(createFilmCard);
   };
 
   return (
     <div className="catalog__films-list">
       {
-        getFilmCard().filter((film) => (
-          GenreFilter[activeGenre] === GenreName.ALL_GENRES
-          || (film.genre === GenreFilter[activeGenre])
-        )).map(
-          ({posterImage, id, name, videoLink}: FilmCardProps) => (
-            <FilmCard
-              key={id}
-              id={id}
-              name={name}
-              posterImage={posterImage}
-              videoLink={videoLink}
-            />))
+        isLoading
+          ? <Loader />
+          : createCurrentFilmsList()
       }
     </div>
   );

@@ -3,7 +3,7 @@ import Header from '../../../components/Headers/Header';
 import AddReviewForm from '../../../components/Forms/AddReviewForm/AddReviewForm';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
-import {Films} from '../../../mocks/films';
+import {Films} from '../../../types/films';
 
 const AddReviewPage = () => {
   const [film, setFilm] = useState<Films | null>(null);

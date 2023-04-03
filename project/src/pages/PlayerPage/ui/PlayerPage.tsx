@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Player from '../../../components/Player/Player';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
-import {Films} from '../../../mocks/films';
+import {Films} from '../../../types/films';
 
 const PlayerPage = () => {
   const [player, setPlayer] = useState<Films | null>(null);

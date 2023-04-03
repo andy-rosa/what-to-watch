@@ -6,7 +6,7 @@ const Catalog = () => (
   <section className="catalog">
     <h2 className="catalog__title visually-hidden">Catalog</h2>
     <CatalogGenresList />
-    <CatalogFilmsList url={'https://12.react.pages.academy/wtw/films'}/>
+    <CatalogFilmsList />
     <div className="catalog__more">
       <button className="catalog__button" type="button">Show more</button>
     </div>
