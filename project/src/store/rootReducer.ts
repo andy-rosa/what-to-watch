@@ -1,8 +1,10 @@
 import {combineReducers} from '@reduxjs/toolkit';
-import filmsSlice from './Films/slice/filmsSlice';
-import genreSlice from './Genre/slice/genreSlice';
+import filmsReducer from './Films/slice/filmsSlice';
+import genreReducer from './Genre/slice/genreSlice';
+import userReducer from './User/slice/userSlice';
 
 export const rootReducer = combineReducers({
-  genre: genreSlice,
-  films: filmsSlice
+  genre: genreReducer,
+  films: filmsReducer,
+  user: userReducer
 });
