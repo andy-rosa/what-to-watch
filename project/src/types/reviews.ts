@@ -1,4 +1,4 @@
-export interface User {
+export interface UserPost {
   id: number;
   name: string;
 }
@@ -8,5 +8,5 @@ export interface Reviews {
   date: string;
   id: number;
   rating: number;
-  user: User;
+  user: UserPost;
 }

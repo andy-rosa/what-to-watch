@@ -14,7 +14,7 @@ export const createAPI = (): AxiosInstance => {
     (config: AxiosRequestConfig) => {
       const token = getToken();
       if (token && config.headers) {
-        config.headers['x-token'] = `Bearer ${token}`;
+        config.headers['x-token'] = token;
       }
       return config;
     });
