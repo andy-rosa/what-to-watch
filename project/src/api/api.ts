@@ -1,5 +1,5 @@
 import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
-import {getToken} from './token';
+import {getToken} from './localStorage/token';
 
 const BACKEND_URL = ' https://12.react.pages.academy/wtw';
 const REQUEST_TIMEOUT = 5000;

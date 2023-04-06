@@ -1,9 +1,18 @@
-import {ChangeEvent, FormEvent, useState} from 'react';
+import {ChangeEvent, FormEvent, useEffect, useState} from 'react';
 import SignInField from './elements/SignInField';
 import {loginAction, UserAuthPost} from '../../../store/User/actions/login/login.api';
+import {useAppDispatch} from '../../../hooks/useAppDispatch';
+import {useAppSelector} from '../../../hooks/useAppSelector';
+import {getUserAuthStatus} from '../../../store/User/selectors/getUserAuthStatus/getUserAuthStatus';
+import {useNavigate} from 'react-router-dom';
+import {AuthorizationStatus} from '../../../types/user';
+import {RoutePath} from '../../Routers/AppRouter/config/routerConfig';
 
 const SignInForm = () => {
   const [form, setForm] = useState<UserAuthPost>({email: '', password: ''});
+  const authorizationStatus = useAppSelector(getUserAuthStatus);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const changeFormHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setForm({...form, [e.target.name]: e.target.value});
@@ -11,8 +20,15 @@ const SignInForm = () => {
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    loginAction(form);
+    dispatch(loginAction(form));
   };
+
+  useEffect(() => {
+    if (authorizationStatus === AuthorizationStatus.Auth) {
+      navigate(RoutePath.main);
+    }
+  }, [authorizationStatus, navigate]);
+
 
   return (
     <div className="sign-in user-page__content">
