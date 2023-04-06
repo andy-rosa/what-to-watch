@@ -14,3 +14,14 @@ export const setUserStorage = (user: User): void => {
 export const removeUserStorage = (): void => {
   localStorage.removeItem(USER_KEY_NAME);
 };
+
+export type Token = string;
+
+export const getToken = (): Token => {
+  if (!getUserStorage()) {
+    return '';
+  }
+
+  const user = getUserStorage() as User;
+  return user.token;
+};
