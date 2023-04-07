@@ -1,7 +1,6 @@
 import {Navigate} from 'react-router-dom';
 import {RoutePath} from '../AppRouter/config/routerConfig';
-import {useAppSelector} from '../../../hooks/useAppSelector';
-import {getUserAuthStatus} from '../../../store/User/selectors/getUserAuthStatus/getUserAuthStatus';
+import {getToken} from '../../../api/localStorage/token';
 
 export enum AuthorizationStatus {
   Auth = 'AUTH',
@@ -15,10 +14,9 @@ interface PrivateRouteProps {
 
 function PrivateRoute(props: PrivateRouteProps) {
   const { children} = props;
-  const authorizationStatus = useAppSelector(getUserAuthStatus);
 
   return (
-    authorizationStatus === AuthorizationStatus.Auth
+    getToken()
       ? children
       : <Navigate to={RoutePath.sign_in} replace/>
   );
