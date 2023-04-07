@@ -1,5 +1,5 @@
 import {RouteObject} from 'react-router-dom';
-import PrivateRoute, {AuthorizationStatus} from '../../PrivateRouter/PrivateRouter';
+import PrivateRoute from '../../PrivateRouter/PrivateRouter';
 import { SignInPage } from '../../../../pages/SignInPage';
 import { FilmPage } from '../../../../pages/FilmPage';
 import { PlayerPage } from '../../../../pages/PlayerPage';
@@ -41,7 +41,7 @@ export const routeConfig: RouteObject[] = [
   {
     path: RoutePath.my_list,
     element:
-      <PrivateRoute authorizationStatus={AuthorizationStatus.Auth} >
+      <PrivateRoute >
         < MyListPage />
       </PrivateRoute>
   },
@@ -56,7 +56,7 @@ export const routeConfig: RouteObject[] = [
   {
     path: RoutePath.add_review,
     element:
-      <PrivateRoute authorizationStatus={AuthorizationStatus.Auth} >
+      <PrivateRoute >
         < AddReviewPage />
       </PrivateRoute>
   },
