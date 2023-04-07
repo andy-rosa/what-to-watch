@@ -15,8 +15,9 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(checkAuthorization.fulfilled, (state) => {
+      .addCase(checkAuthorization.fulfilled, (state, action) => {
         state.authorizationStatus = AuthorizationStatus.Auth;
+        state.user = action.payload;
       })
       .addCase(checkAuthorization.rejected, (state) => {
         state.authorizationStatus = AuthorizationStatus.NoAuth;

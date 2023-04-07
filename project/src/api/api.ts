@@ -1,5 +1,5 @@
 import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
-import {getToken} from './localStorage/user';
+import {getToken} from './localStorage/token';
 
 const BACKEND_URL = ' https://12.react.pages.academy/wtw';
 const REQUEST_TIMEOUT = 5000;
@@ -10,7 +10,7 @@ export const createAPI = (): AxiosInstance => {
     timeout: REQUEST_TIMEOUT,
   });
 
-  api.interceptors.response.use(
+  api.interceptors.request.use(
     (config: AxiosRequestConfig) => {
       const token = getToken();
       if (token && config.headers) {
