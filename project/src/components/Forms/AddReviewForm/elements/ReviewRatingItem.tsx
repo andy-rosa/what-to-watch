@@ -1,12 +1,11 @@
-import React from 'react';
-import {EvtFormProps} from '../AddReviewForm';
+import React, {ChangeEvent, memo} from 'react';
 
 export interface ReviewRatingItemProps {
   value: number;
-  formDataHandler: (evt: EvtFormProps) => void;
+  onChange: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ReviewRatingItem = ({value, formDataHandler}: ReviewRatingItemProps) => (
+const ReviewRatingItem = ({value, onChange}: ReviewRatingItemProps) => (
   <>
     <input
       className="rating__input"
@@ -14,10 +13,10 @@ const ReviewRatingItem = ({value, formDataHandler}: ReviewRatingItemProps) => (
       type="radio"
       name="rating"
       value={value}
-      onChange={formDataHandler}
+      onChange={onChange}
     />
     <label className="rating__label" htmlFor={`star-${value}`}>Rating {value}</label>
   </>
 );
 
-export default ReviewRatingItem;
+export default memo(ReviewRatingItem);

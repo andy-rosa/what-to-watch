@@ -1,15 +1,15 @@
-import React from 'react';
-import {EvtFormProps, FormProps} from '../AddReviewForm';
+import React, {ChangeEvent, memo} from 'react';
 
-type ReviewTextProps = {
-  formDataHandler: (evt: EvtFormProps) => void;
-  form: FormProps;
+interface ReviewTextProps {
+  value: string;
+  onChange?: (evt: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-const ReviewText = ({formDataHandler, form}: ReviewTextProps) => (
+const ReviewText = ({value, onChange}: ReviewTextProps) => (
   <div className="add-review__text">
     <textarea className="add-review__textarea" name="review-text" id="review-text"
-      placeholder="Review text" onChange={formDataHandler} value={form['review-text']}
+      placeholder="Review text" value={value}
+      onChange={onChange}
     >
     </textarea>
     <div className="add-review__submit">
@@ -18,4 +18,4 @@ const ReviewText = ({formDataHandler, form}: ReviewTextProps) => (
   </div>
 );
 
-export default ReviewText;
+export default memo(ReviewText);

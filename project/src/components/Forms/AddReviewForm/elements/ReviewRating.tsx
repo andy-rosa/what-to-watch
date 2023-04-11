@@ -1,22 +1,25 @@
-import React from 'react';
+import React, {ChangeEvent, memo} from 'react';
 import ReviewRatingItem from './ReviewRatingItem';
-import {EvtFormProps} from '../AddReviewForm';
 
 const MAX_RATING = 10;
 
 type ReviewRatingProps = {
-  formDataHandler: (evt: EvtFormProps) => void;
+  onChange: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ReviewRating = ({formDataHandler}: ReviewRatingProps) => {
+const ReviewRating = ({onChange}: ReviewRatingProps) => {
   const rating = Array.from({length: MAX_RATING});
   return (
     <div className="rating">
       <div className="rating__stars">
         {
           rating.map((_, value) =>
-            // eslint-disable-next-line react/no-array-index-key
-            <ReviewRatingItem value={value + 1} key={value + 1} formDataHandler={formDataHandler}/>
+            (
+              // eslint-disable-next-line react/no-array-index-key
+              <ReviewRatingItem value={MAX_RATING - value} key={MAX_RATING - value}
+                onChange={onChange}
+              />
+            )
           )
         }
       </div>
@@ -24,4 +27,4 @@ const ReviewRating = ({formDataHandler}: ReviewRatingProps) => {
   );
 };
 
-export default ReviewRating;
+export default memo(ReviewRating);
