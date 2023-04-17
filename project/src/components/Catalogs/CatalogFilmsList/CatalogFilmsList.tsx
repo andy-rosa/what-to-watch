@@ -4,10 +4,11 @@ import {useParams} from 'react-router-dom';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import {useSelector} from 'react-redux';
 import {getFilteredFilms} from '../../../store/Films/selectors/getFilteredFilms/getFilteredFilms';
-import {fetchFilmsAction, fetchFilmsSimilarAction} from '../../../store/Films/actions/action.api';
 import {getNonRepeatFilmCard} from '../../../helpers/getNonRepeatFilmsCard';
 import Loader from '../../Loader/Loader';
 import {useAppSelector} from '../../../hooks/useAppSelector';
+import { fetchFilmsSimilarAction } from '../../../store/Films/actions/fetchFilmsSimilarAction/fetchFilmsSimilarAction.api';
+import { fetchFilmsAction } from '../../../store/Films/actions/fetchFilmsAction/fetchFilmsAction.api';
 
 const CatalogFilmsList = () => {
   const {id: idUrl} = useParams();
