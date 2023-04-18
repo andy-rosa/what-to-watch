@@ -1,12 +1,12 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import Loader from './Loader';
 
-describe('Loader', () => {
+describe('Loader component', () => {
   test('renders the loader component', () => {
-    const { getByTestId } = render(<Loader />);
-    const loaderWrapper = getByTestId('loader-wrapper');
-    const loader = getByTestId('loader');
+    render(<Loader />);
+    const loaderWrapper = screen.getByTestId('loader-wrapper');
+    const loader = screen.getByTestId('loader');
     expect(loaderWrapper).toBeInTheDocument();
     expect(loader).toBeInTheDocument();
   });
