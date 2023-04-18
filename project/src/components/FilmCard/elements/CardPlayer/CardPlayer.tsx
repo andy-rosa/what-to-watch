@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {FilmCardProps} from '../FilmCard';
+import {FilmCardProps} from '../../FilmCard';
 
 type CardPlayerProps = Pick<FilmCardProps, 'videoLink'> & {
   isPlaying: boolean;

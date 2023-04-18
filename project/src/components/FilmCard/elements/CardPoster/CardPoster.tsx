@@ -1,7 +1,7 @@
 import React from 'react';
-import {FilmCardProps} from '../FilmCard';
+import {FilmCardProps} from '../../FilmCard';
 
-const CardPoster = ({posterImage, name}: Omit<FilmCardProps, 'id' | 'videoLink'>) => (
+const CardPoster = ({posterImage, name}: Pick<FilmCardProps, 'posterImage' | 'name'>) => (
   <>
     <div className="small-film-card__image">
       <img

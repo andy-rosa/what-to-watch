@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import FilmCard, {FilmCardProps} from '../../FilmCard/FilmCard';
 import {useParams} from 'react-router-dom';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
-import {useSelector} from 'react-redux';
 import {getFilteredFilms} from '../../../store/Films/selectors/getFilteredFilms/getFilteredFilms';
 import {getNonRepeatFilmCard} from '../../../helpers/getNonRepeatFilmsCard';
 import Loader from '../../Loader/Loader';
@@ -12,7 +11,7 @@ import { fetchFilmsAction } from '../../../store/Films/actions/fetchFilmsAction/
 
 const CatalogFilmsList = () => {
   const {id: idUrl} = useParams();
-  const films = useSelector(getFilteredFilms);
+  const films = useAppSelector(getFilteredFilms);
   const dispatch = useAppDispatch();
   const {isLoading} = useAppSelector((state) => state.films);
 

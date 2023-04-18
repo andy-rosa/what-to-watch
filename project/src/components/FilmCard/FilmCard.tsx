@@ -3,7 +3,7 @@ import {generatePath, Link} from 'react-router-dom';
 import {Films} from '../../types/films';
 import cls from './FilmsCard.module.css';
 import {RoutePath} from '../Routers/AppRouter/config/routerConfig';
-import CardToggle from './elements/CardToggle';
+import CardToggle from './elements/CardToggle/CardToggle';
 
 export type FilmCardProps = Pick<Films, 'name' | 'posterImage' | 'id' | 'videoLink' >
 

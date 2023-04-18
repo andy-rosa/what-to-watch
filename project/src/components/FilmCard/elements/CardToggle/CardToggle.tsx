@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
-import CardPlayer from './CardPlayer';
-import CardPoster from './CardPoster';
+import CardPlayer from '../CardPlayer/CardPlayer';
+import CardPoster from '../CardPoster/CardPoster';
 
 const STANDARD_DELAY = 1000;
 
