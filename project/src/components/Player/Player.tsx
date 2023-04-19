@@ -1,6 +1,6 @@
 import React from 'react';
-import ButtonPlayer from './elements/ButtonPlayer';
-import TimePlayer from './elements/TimePlayer';
+import ButtonPlayer from './elements/ButtonPlayer/ButtonPlayer';
+import TimePlayer from './elements/TimePlayer/TimePlayer';
 import {Films} from '../../types/films';
 import {useNavigate} from 'react-router-dom';
 
@@ -11,7 +11,7 @@ const Player = ({videoLink, previewImage}: Pick<Films, PlayerProps>) => {
 
   return (
     <div className="player">
-      <video src={videoLink} className="player__video" poster={previewImage}></video>
+      <video src={videoLink} className="player__video" poster={previewImage} role="video"></video>
       <button type="button" className="player__exit" onClick={() => navigate(-1)}>Exit</button>
 
       <div className="player__controls">

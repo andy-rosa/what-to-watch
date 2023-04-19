@@ -1,24 +1,15 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Header from './Header';
-import {store} from '../../store';
-import { Provider } from 'react-redux';
-import {MemoryRouter, Route, Routes} from 'react-router-dom';
 import { RoutePath } from '../Routers/AppRouter/config/routerConfig';
+import MockProviderTest from '../../helpers/decorators/MockProviderTest/MockProviderTest';
 
 
 describe('Header', () => {
   test('renders with LogoHeader by default', () => {
     render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={[RoutePath.main]} >
-          <Routes>
-            <Route path={RoutePath.main} element={<Header />} />
-          </Routes>
-        </MemoryRouter>
-      </Provider >
+      <MockProviderTest component={<Header />} />
     );
-
 
     const logoHeader = screen.getByTestId('logo-header');
     expect(logoHeader).toBeInTheDocument();
@@ -26,13 +17,7 @@ describe('Header', () => {
 
   test('renders with UserBlockHeader when isUserBlock is true', () => {
     render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={[RoutePath.main]} >
-          <Routes>
-            <Route path={RoutePath.main} element={<Header isUserBlock/>} />
-          </Routes>
-        </MemoryRouter>
-      </Provider >
+      <MockProviderTest component={<Header isUserBlock/>} />
     );
 
     const userBlockHeader = screen.getByTestId('user-block-header');
@@ -41,13 +26,7 @@ describe('Header', () => {
 
   test('renders with BreadcrumbsHeader when isShowBreadcrumb is true', () => {
     render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={[RoutePath.film]} >
-          <Routes>
-            <Route path={RoutePath.film} element={<Header isShowBreadcrumb/>} />
-          </Routes>
-        </MemoryRouter>
-      </Provider >
+      <MockProviderTest path={RoutePath.film} component={<Header isShowBreadcrumb />} />
     );
 
     const breadcrumbsHeader = screen.getByTestId('breadcrumbs-header');
@@ -56,13 +35,7 @@ describe('Header', () => {
 
   test('renders children when passed', () => {
     render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={[RoutePath.film]} >
-          <Routes>
-            <Route path={RoutePath.film} element={<Header>Children test</Header> } />
-          </Routes>
-        </MemoryRouter>
-      </Provider >
+      <MockProviderTest path={RoutePath.film} component={<Header>Children test</Header>} />
     );
 
     const children = screen.getByText('Children test');

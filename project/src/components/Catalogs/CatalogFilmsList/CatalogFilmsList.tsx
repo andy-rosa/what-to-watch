@@ -41,7 +41,7 @@ const CatalogFilmsList = () => {
   };
 
   return (
-    <div className="catalog__films-list">
+    <div className="catalog__films-list" data-testid={'films-list'}>
       {
         isLoading
           ? <Loader />
