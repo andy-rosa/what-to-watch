@@ -2,16 +2,12 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import CatalogGenresList from './CatalogGenresList';
 import {GenreName} from '../../../types/genre';
-import {store} from '../../../store';
-import { Provider } from 'react-redux';
+import MockProviderWithComponent from '../../../helpers/decorators/MockProviderWithComponent/MockProviderWithComponent';
 
 describe('CatalogGenresList component', () => {
   it('renders all genres', () => {
-    render(
-      <Provider store={store}>
-        <CatalogGenresList />
-      </Provider>
-    );
+    const catalog = new MockProviderWithComponent(<CatalogGenresList />);
+    render(catalog.renderTest());
 
     const genreNames = Object.values(GenreName);
     genreNames.forEach((genre) => {

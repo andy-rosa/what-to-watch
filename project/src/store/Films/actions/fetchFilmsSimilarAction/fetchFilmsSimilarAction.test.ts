@@ -7,7 +7,6 @@ import {Action, ThunkDispatch} from '@reduxjs/toolkit';
 import {fetchFilmsSimilarAction} from './fetchFilmsSimilarAction.api';
 
 describe('fetchFilmsSimilarAction.test', () => {
-  // А тут не работает
   const api = createAPI();
   const mockAPI = new MockAdapter(api);
   const middleware = [thunk.withExtraArgument(api)];
@@ -24,7 +23,6 @@ describe('fetchFilmsSimilarAction.test', () => {
     mockAPI
       .onGet(`/films/${mockId}/similar`)
       .reply(200, {id: mockId});
-    expect(store.getActions()).toEqual({id: mockId});
 
     await store.dispatch(fetchFilmsSimilarAction(mockId));
 

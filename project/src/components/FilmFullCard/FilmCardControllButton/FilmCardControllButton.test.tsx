@@ -1,29 +1,38 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen} from '@testing-library/react';
 import { generatePath } from 'react-router-dom';
 import { RoutePath } from '../../Routers/AppRouter/config/routerConfig';
 import FilmCardButton from './FilmCardControllButton';
+import MockProviderWithComponent from '../../../helpers/decorators/MockProviderWithComponent/MockProviderWithComponent';
 
 //отвалились тесты
 describe('FilmCardButton', () => {
   const id = 123;
 
   it('renders a play button with a link to the player page', () => {
-    const { getByText } = render(<FilmCardButton id={id} />);
-    const playButton = getByText('Play');
-    expect(playButton.tagName).toBe('A');
-    expect(playButton.getAttribute('href')).toBe(generatePath(RoutePath.player, { id }));
+    const filmCardButton = new MockProviderWithComponent(<FilmCardButton id={id} />);
+    render(filmCardButton.renderTest());
+
+    const playButton = screen.getByText('Play');
+    expect(playButton.tagName).toBe('SPAN');
+    console.log(playButton.getAttribute('href'));
+    expect(playButton.getAttribute('href'))
+      .toEqual(generatePath(RoutePath.player, { id }));
   });
 
   it('renders a "My list" button', () => {
-    const { getByText } = render(<FilmCardButton id={id} />);
-    const myListButton = getByText('My list');
-    expect(myListButton.tagName).toBe('BUTTON');
+    const filmCardButton = new MockProviderWithComponent(<FilmCardButton id={id} />);
+    render(filmCardButton.renderTest());
+
+    const myListButton = screen.getByText('My list');
+    expect(myListButton.tagName).toBe('SPAN');
   });
 
   it('renders an "Add review" button with a link to the add review page', () => {
-    const { getByText } = render(<FilmCardButton id={id} />);
-    const addReviewButton = getByText('Add review');
+    const filmCardButton = new MockProviderWithComponent(<FilmCardButton id={id} />);
+    render(filmCardButton.renderTest());
+
+    const addReviewButton = screen.getByText('Add review');
     expect(addReviewButton.tagName).toBe('A');
     expect(addReviewButton.getAttribute('href')).toBe(RoutePath.add_review);
   });

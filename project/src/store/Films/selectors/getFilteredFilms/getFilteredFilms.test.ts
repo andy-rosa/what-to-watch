@@ -16,11 +16,9 @@ describe('getFilteredFilms', () => {
       }
     };
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+
     const result = getFilteredFilms(state);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+
     expect(result).toEqual(state.films.films);
     expect(result).toHaveLength(3);
   });

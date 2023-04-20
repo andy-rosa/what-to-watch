@@ -1,10 +1,12 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import Catalog from './Catalog';
-import MockProviderTest from '../../../helpers/decorators/MockProviderTest/MockProviderTest';
+import MockProviderWithComponent from '../../../helpers/decorators/MockProviderWithComponent/MockProviderWithComponent';
 
 test('renders the Catalog component', () => {
-  render(<MockProviderTest component={<Catalog />} />);
+  const catalog = new MockProviderWithComponent(<Catalog />);
+  render(catalog.renderTest());
+
   const catalogTitle = screen.getByRole('heading', { name: 'Catalog' });
   const catalogGenresList = screen.getByTestId('genres-list');
   const catalogFilmsList = screen.getByTestId('films-list');
