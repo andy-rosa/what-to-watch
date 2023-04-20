@@ -27,8 +27,8 @@ const CardToggle = ({posterImage, name, videoLink, isActive}: CardToggleProps): 
   }, [isActive]);
 
   return isPlaying
-    ? < CardPlayer isPlaying={isPlaying} videoLink={videoLink} />
-    : < CardPoster name={name} posterImage={posterImage} />;
+    ? < CardPlayer isPlaying={isPlaying} videoLink={videoLink} data-testid={'card-player'}/>
+    : < CardPoster name={name} posterImage={posterImage} data-testid={'card-poster'}/>;
 };
 
 export default CardToggle;

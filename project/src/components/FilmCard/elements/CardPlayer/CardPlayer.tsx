@@ -23,7 +23,7 @@ const CardPlayer = ({isPlaying, videoLink}: CardPlayerProps) => {
   },[isPlaying]);
 
   return (
-    <div className="small-film-card__image">
+    <div className="small-film-card__image" data-testid="card-player">
       <video
         ref={videoRef}
         preload="none"
