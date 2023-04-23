@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import CardPoster from './CardPoster';
 
 describe('CardPoster', () => {
@@ -9,17 +9,17 @@ describe('CardPoster', () => {
   };
 
   it('renders the poster image and title', () => {
-    const { getByAltText, getByText } = render(<CardPoster {...props} />);
-    const image = getByAltText(props.name);
-    const title = getByText(props.name);
+    render(<CardPoster {...props} />);
+    const image = screen.getByAltText(props.name);
+    const title = screen.getByText(props.name);
 
     expect(image).toBeInTheDocument();
     expect(title).toBeInTheDocument();
   });
 
   it('sets the correct image source and dimensions', () => {
-    const { getByAltText } = render(<CardPoster {...props} />);
-    const image = getByAltText(props.name);
+    render(<CardPoster {...props} />);
+    const image = screen.getByAltText(props.name);
 
     expect(image).toHaveAttribute('src', props.posterImage);
     expect(image).toHaveAttribute('width', '280');

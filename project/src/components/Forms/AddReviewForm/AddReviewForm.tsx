@@ -1,6 +1,6 @@
 import React, {memo, SyntheticEvent, useCallback, useState} from 'react';
-import ReviewText from './elements/ReviewText';
-import ReviewRating from './elements/ReviewRating';
+import ReviewText from './elements/ReviewRatingText/ReviewText';
+import ReviewRating from './elements/ReviewRating/ReviewRating';
 
 const AddReviewForm = (): JSX.Element => {
   const [text, setText] = useState('');

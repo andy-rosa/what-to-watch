@@ -40,6 +40,7 @@ describe('GenreItem component', () => {
 
     render(<GenreItem {...mockProps} />);
 
+
     const genreLink = screen.getByRole('link');
     fireEvent.click(genreLink);
 

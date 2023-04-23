@@ -5,7 +5,6 @@ import { RoutePath } from '../../Routers/AppRouter/config/routerConfig';
 import FilmCardButton from './FilmCardControllButton';
 import MockProviderWithComponent from '../../../helpers/decorators/MockProviderWithComponent/MockProviderWithComponent';
 
-//отвалились тесты
 describe('FilmCardButton', () => {
   const id = 123;
 
@@ -13,9 +12,8 @@ describe('FilmCardButton', () => {
     const filmCardButton = new MockProviderWithComponent(<FilmCardButton id={id} />);
     render(filmCardButton.renderTest());
 
-    const playButton = screen.getByText('Play');
-    expect(playButton.tagName).toBe('SPAN');
-    console.log(playButton.getAttribute('href'));
+    const playButton = screen.getByTestId('link-button-play');
+    expect(playButton.tagName).toBe('A');
     expect(playButton.getAttribute('href'))
       .toEqual(generatePath(RoutePath.player, { id }));
   });
@@ -24,8 +22,9 @@ describe('FilmCardButton', () => {
     const filmCardButton = new MockProviderWithComponent(<FilmCardButton id={id} />);
     render(filmCardButton.renderTest());
 
-    const myListButton = screen.getByText('My list');
-    expect(myListButton.tagName).toBe('SPAN');
+    const myListButton = screen.getByTestId('my-list-button');
+    expect(myListButton.tagName).toBe('BUTTON');
+    expect(myListButton).toHaveTextContent('My list');
   });
 
   it('renders an "Add review" button with a link to the add review page', () => {

@@ -1,5 +1,5 @@
 import React, {ChangeEvent, memo} from 'react';
-import ReviewRatingItem from './ReviewRatingItem';
+import ReviewRatingItem from '../ReviewRatingItem/ReviewRatingItem';
 
 const MAX_RATING = 10;
 

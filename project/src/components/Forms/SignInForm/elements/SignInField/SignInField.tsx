@@ -21,6 +21,7 @@ const SignInField = ({
         placeholder={label}
         name={type}
         id={inputName}
+        data-testid={label}
         {...otherProps}
       />
       <label

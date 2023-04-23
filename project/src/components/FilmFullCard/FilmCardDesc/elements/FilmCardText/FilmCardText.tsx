@@ -1,10 +1,10 @@
 import React from 'react';
-import {Films} from '../../../../types/films';
+import {Films} from '../../../../../types/films';
 
 export type FilmCardTextProps = 'description' | 'director' | 'starring'
 
 const FilmCardText = ({description, director, starring}: Pick<Films, FilmCardTextProps>) => (
-  <div className="film-card__text">
+  <div className="film-card__text" data-testid={'film-card-text'}>
     <p>
       {description}
     </p>

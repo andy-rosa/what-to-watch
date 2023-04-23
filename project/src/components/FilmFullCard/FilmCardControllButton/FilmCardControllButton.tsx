@@ -5,13 +5,13 @@ import {Films} from '../../../types/films';
 
 const FilmCardButton = ({id}: Pick<Films, 'id'>) => (
   <div className="film-card__buttons">
-    <Link to={generatePath(RoutePath.player, {id})} className="btn btn--play film-card__button" >
+    <Link to={generatePath(RoutePath.player, {id})} className="btn btn--play film-card__button" data-testid={'link-button-play'}>
       <svg viewBox="0 0 19 19" width="19" height="19">
         <use xlinkHref="#play-s"></use>
       </svg>
       <span>Play</span>
     </Link >
-    <button className="btn btn--list film-card__button" type="button">
+    <button className="btn btn--list film-card__button" type="button" data-testid={'my-list-button'}>
       <svg viewBox="0 0 19 20" width="19" height="20">
         <use xlinkHref="#add"></use>
       </svg>

@@ -1,5 +1,5 @@
 import {ChangeEvent, FormEvent, useEffect, useState} from 'react';
-import SignInField from './elements/SignInField';
+import SignInField from './elements/SignInField/SignInField';
 import {loginAction, UserAuthPost} from '../../../store/User/actions/login/login.api';
 import {useAppDispatch} from '../../../hooks/useAppDispatch';
 import {useAppSelector} from '../../../hooks/useAppSelector';

@@ -1,7 +1,7 @@
 import React from 'react';
-import FilmCardNav, {FilmCardNavProps} from './elements/FilmCardNav';
-import FilmCardRating, {FilmCardRatingProps} from './elements/FilmCardRating';
-import FilmCardText, {FilmCardTextProps} from './elements/FilmCardText';
+import FilmCardNav, {FilmCardNavProps} from './elements/FilmCardNav/FilmCardNav';
+import FilmCardRating, {FilmCardRatingProps} from './elements/FilmCardRating/FilmCardRating';
+import FilmCardText, {FilmCardTextProps} from './elements/FilmCardText/FilmCardText';
 import {Films} from '../../../types/films';
 
 export type FilmCardDescProps = Pick<Films, FilmCardRatingProps | FilmCardTextProps | FilmCardNavProps>

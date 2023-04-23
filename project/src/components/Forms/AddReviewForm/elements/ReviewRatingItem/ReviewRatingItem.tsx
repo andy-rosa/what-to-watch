@@ -14,6 +14,7 @@ const ReviewRatingItem = ({value, onChange}: ReviewRatingItemProps) => (
       name="rating"
       value={value}
       onChange={onChange}
+      data-testid={'rating-item'}
     />
     <label className="rating__label" htmlFor={`star-${value}`}>Rating {value}</label>
   </>
