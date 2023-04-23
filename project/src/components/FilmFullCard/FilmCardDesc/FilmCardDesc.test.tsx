@@ -1,7 +1,7 @@
 import React from 'react';
 import {render, screen} from '@testing-library/react';
 import FilmCardDesc, { FilmCardDescProps } from './FilmCardDesc';
-import MockProviderWithComponent from "../../../helpers/decorators/MockProviderWithComponent/MockProviderWithComponent";
+import MockProviderWithComponent from '../../../helpers/decorators/MockProviderWithComponent/MockProviderWithComponent';
 
 const mockProps: FilmCardDescProps = {
   rating: 8.5,
@@ -14,7 +14,7 @@ const mockProps: FilmCardDescProps = {
 
 describe('FilmCardDesc', () => {
   it('should render film card nav, rating, and text', () => {
-    const filmCardDesc = new MockProviderWithComponent(<FilmCardDesc {...mockProps} />)
+    const filmCardDesc = new MockProviderWithComponent(<FilmCardDesc {...mockProps} />);
     render(filmCardDesc.renderTest());
 
     expect(screen.getByTestId('film-card-nav')).toBeInTheDocument();

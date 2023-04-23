@@ -5,7 +5,7 @@ import ReviewRatingItem from './ReviewRatingItem';
 describe('ReviewRatingItem', () => {
   it('renders input and label with correct text', () => {
     const value = 7;
-    render(<ReviewRatingItem value={value} onChange={() => {}} />);
+    render(<ReviewRatingItem value={value} onChange={() => null} />);
     const input = screen.getByTestId('rating-item');
     const label = screen.getByText(`Rating ${value}`);
     expect(input).toBeInTheDocument();

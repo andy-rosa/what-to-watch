@@ -7,12 +7,12 @@ describe('FilmCardRating', () => {
   const scoresCount = 123;
 
   it('renders rating and number of ratings', () => {
-    const { getByText } = render(
+    render(
       <FilmCardRating rating={rating} scoresCount={scoresCount} />
     );
 
-    expect(getByText(rating.toString())).toBeInTheDocument();
-    expect(getByText(`${scoresCount} ratings`)).toBeInTheDocument();
+    expect(screen.getByText(rating.toString())).toBeInTheDocument();
+    expect(screen.getByText(`${scoresCount} ratings`)).toBeInTheDocument();
   });
 
   it('renders "Very good" rating level', () => {

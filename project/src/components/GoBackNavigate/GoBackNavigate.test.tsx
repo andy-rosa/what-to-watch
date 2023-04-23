@@ -8,8 +8,8 @@ jest.mock('react-router-dom', () => ({
 
 describe('GoBackNavigate', () => {
   it('renders the component', () => {
-    const { getByText } = render(<GoBackNavigate />);
-    expect(getByText(/Oops you're lost!/i)).toBeInTheDocument();
+    render(<GoBackNavigate />);
+    expect(screen.getByText(/Oops you're lost!/i)).toBeInTheDocument();
   });
 
   it('navigates to the previous page when the "Go Back" button is clicked', () => {

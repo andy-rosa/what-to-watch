@@ -14,6 +14,8 @@ describe('CardPoster', () => {
     const title = screen.getByText(props.name);
 
     expect(image).toBeInTheDocument();
+    expect(image).toHaveAttribute('width', '280');
+    expect(image).toHaveAttribute('height', '175');
     expect(title).toBeInTheDocument();
   });
 
@@ -22,7 +24,6 @@ describe('CardPoster', () => {
     const image = screen.getByAltText(props.name);
 
     expect(image).toHaveAttribute('src', props.posterImage);
-    expect(image).toHaveAttribute('width', '280');
-    expect(image).toHaveAttribute('height', '175');
+
   });
 });

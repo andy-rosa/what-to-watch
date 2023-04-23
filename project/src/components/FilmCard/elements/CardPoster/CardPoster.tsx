@@ -3,7 +3,7 @@ import {FilmCardProps} from '../../FilmCard';
 
 const CardPoster = ({posterImage, name}: Pick<FilmCardProps, 'posterImage' | 'name'>) => (
   <>
-    <div className="small-film-card__image">
+    <div className="small-film-card__image" data-testid={'card-poster'}>
       <img
         alt={name}
         src={posterImage}

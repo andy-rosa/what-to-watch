@@ -1,9 +1,9 @@
 import React from 'react';
-import {fireEvent, render, screen} from '@testing-library/react';
-import {useDispatch, useSelector} from 'react-redux';
-import GenreItem, {GenreItemProps} from './GenreItem';
-import {genreActions} from '../../../../../store/Genre/slice/genreSlice';
-import {GenreName} from '../../../../../types/genre';
+import { fireEvent, render, screen } from '@testing-library/react';
+import GenreItem, { GenreItemProps } from './GenreItem';
+import { genreActions } from '../../../../../store/Genre/slice/genreSlice';
+import { GenreName } from '../../../../../types/genre';
+import * as ReactRedux from 'react-redux';
 
 jest.mock('react-redux');
 
@@ -13,12 +13,12 @@ describe('GenreItem component', () => {
   };
 
   beforeEach(() => {
-    (useDispatch as jest.Mock).mockClear();
-    (useSelector as jest.Mock).mockClear();
+    jest.spyOn(ReactRedux, 'useDispatch').mockClear();
+    jest.spyOn(ReactRedux, 'useSelector').mockClear();
   });
 
   it('renders the genre name', () => {
-    (useSelector as jest.Mock).mockReturnValueOnce('');
+    jest.spyOn(ReactRedux, 'useSelector').mockReturnValueOnce('');
     render(<GenreItem {...mockProps} />);
 
     const genreLink = screen.getByRole('link');
@@ -26,7 +26,7 @@ describe('GenreItem component', () => {
   });
 
   it('applies the active class if the genre is selected', () => {
-    (useSelector as jest.Mock).mockReturnValueOnce(mockProps.name);
+    jest.spyOn(ReactRedux, 'useSelector').mockReturnValueOnce(mockProps.name);
     render(<GenreItem {...mockProps} />);
 
     const genreItem = screen.getByRole('listitem');
@@ -35,11 +35,10 @@ describe('GenreItem component', () => {
 
   it('dispatches the select action when clicked', () => {
     const dispatchMock = jest.fn();
-    (useDispatch as jest.Mock).mockReturnValueOnce(dispatchMock);
-    (useSelector as jest.Mock).mockReturnValueOnce('');
+    jest.spyOn(ReactRedux, 'useDispatch').mockReturnValueOnce(dispatchMock);
+    jest.spyOn(ReactRedux, 'useSelector').mockReturnValueOnce('');
 
     render(<GenreItem {...mockProps} />);
-
 
     const genreLink = screen.getByRole('link');
     fireEvent.click(genreLink);

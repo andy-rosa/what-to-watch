@@ -11,6 +11,7 @@ class MockProviderWithComponent {
 
   constructor(component: ReactNode) {
     this.component = component;
+
   }
 
   set path(path: AppRouteKey | string) {

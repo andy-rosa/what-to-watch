@@ -3,7 +3,7 @@ import SignInForm from './SignInForm';
 import { AuthorizationStatus } from '../../../types/user';
 import { RoutePath } from '../../Routers/AppRouter/config/routerConfig';
 import { loginAction } from '../../../store/User/actions/login/login.api';
-import MockProviderWithComponent from "../../../helpers/decorators/MockProviderWithComponent/MockProviderWithComponent";
+import MockProviderWithComponent from '../../../helpers/decorators/MockProviderWithComponent/MockProviderWithComponent';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { useAppSelector } from '../../../hooks/useAppSelector';
 
@@ -21,7 +21,7 @@ describe('SignInForm', () => {
     useAppDispatch.mockReturnValue(mockDispatch);
     useAppSelector.mockReturnValue(AuthorizationStatus.NoAuth);
 
-    const signInForm = new MockProviderWithComponent(<SignInForm />)
+    const signInForm = new MockProviderWithComponent(<SignInForm />);
     signInForm.path = RoutePath.sign_in;
     render(signInForm.renderTest());
 

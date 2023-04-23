@@ -27,6 +27,7 @@ const FilmCard = ({name, posterImage, id, videoLink}: FilmCardProps): JSX.Elemen
       <Link
         to={generatePath(RoutePath.film, {id})}
         className={cls.wrapper}
+        data-testid="link-to-film"
       >
         <CardToggle
           isActive={isActive}

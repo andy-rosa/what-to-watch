@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import  FilmCardNav from './FilmCardNav';
+import FilmCardNav from './FilmCardNav';
 import MockProviderWithComponent
-  from "../../../../../helpers/decorators/MockProviderWithComponent/MockProviderWithComponent";
+  from '../../../../../helpers/decorators/MockProviderWithComponent/MockProviderWithComponent';
 
 const mockProps: { id: number } = { id: 1 };
 

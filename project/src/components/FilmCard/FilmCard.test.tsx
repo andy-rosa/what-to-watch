@@ -13,7 +13,6 @@ const mockFilm: FilmCardProps = {
 
 describe('FilmCard', () => {
 
-
   it('should render film card with correct details', () => {
     const filmCard = new MockProviderWithComponent(<FilmCard {...mockFilm} />);
     render(filmCard.renderTest());
@@ -24,8 +23,7 @@ describe('FilmCard', () => {
     const filmCard = new MockProviderWithComponent(<FilmCard {...mockFilm} />);
     render(filmCard.renderTest());
     const filmCardLink = screen.getByTestId('link-to-film');
-    fireEvent.click(filmCardLink);
-    expect(window.location.pathname).toBe(generatePath(RoutePath.film, { id: mockFilm.id }));
+    expect(filmCardLink.getAttribute('href')).toBe(generatePath(RoutePath.film, { id: mockFilm.id }));
   });
 
   it('should play video when hovered over', () => {
@@ -33,6 +31,6 @@ describe('FilmCard', () => {
     render(filmCardComponent.renderTest());
     const filmCard = screen.getByRole('article');
     fireEvent.mouseOver(filmCard);
-    expect(screen.getByTitle(`${mockFilm.name}`)).toBeInTheDocument();
+    expect(screen.getByText(`${mockFilm.name}`)).toBeInTheDocument();
   });
 });
