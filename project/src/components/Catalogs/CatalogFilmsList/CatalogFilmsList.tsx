@@ -8,8 +8,14 @@ import Loader from '../../Loader/Loader';
 import {useAppSelector} from '../../../hooks/useAppSelector';
 import { fetchFilmsSimilarAction } from '../../../store/Films/actions/fetchFilmsSimilarAction/fetchFilmsSimilarAction.api';
 import { fetchFilmsAction } from '../../../store/Films/actions/fetchFilmsAction/fetchFilmsAction.api';
+import {STEP} from '../../sections/Catalog/Catalog';
 
-const CatalogFilmsList = () => {
+interface CatalogFilmsListProps {
+  range?: number;
+  handleClick?: () => void;
+}
+
+const CatalogFilmsList = ({range = STEP, handleClick}: CatalogFilmsListProps) => {
   const {id: idUrl} = useParams();
   const films = useAppSelector(getFilteredFilms);
   const dispatch = useAppDispatch();
@@ -37,17 +43,25 @@ const CatalogFilmsList = () => {
     if (idUrl) {
       return getNonRepeatFilmCard(films, idUrl).map(createFilmCard);
     }
-    return films.map(createFilmCard);
+    return films.slice(0, range).map(createFilmCard);
   };
 
   return (
-    <div className="catalog__films-list" data-testid={'films-list'}>
+    <>
+      <div className="catalog__films-list" data-testid={'films-list'}>
+        {
+          isLoading
+            ? <Loader />
+            : createCurrentFilmsList()
+        }
+      </div>
       {
-        isLoading
-          ? <Loader />
-          : createCurrentFilmsList()
+        range < films.length &&
+        <div className="catalog__more">
+          <button className="catalog__button" type="button" onClick={handleClick}>Show more</button>
+        </div>
       }
-    </div>
+    </>
   );
 };
 
