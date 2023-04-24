@@ -18,8 +18,8 @@ describe('SignInForm', () => {
 
   it('dispatches login action when form is submitted with valid inputs', () => {
     const mockDispatch = jest.fn();
-    useAppDispatch.mockReturnValue(mockDispatch);
-    useAppSelector.mockReturnValue(AuthorizationStatus.NoAuth);
+    (useAppDispatch as any).mockReturnValue(mockDispatch);
+    (useAppSelector as any).mockReturnValue(AuthorizationStatus.NoAuth);
 
     const signInForm = new MockProviderWithComponent(<SignInForm />);
     signInForm.path = RoutePath.sign_in;

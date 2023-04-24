@@ -17,9 +17,9 @@ describe('getFilteredFilms', () => {
     };
 
 
-    const result = getFilteredFilms(state);
+    const result = getFilteredFilms(state as RootState);
 
-    expect(result).toEqual(state.films.films);
+    expect(result).toEqual(state.films?.films);
     expect(result).toHaveLength(3);
   });
 

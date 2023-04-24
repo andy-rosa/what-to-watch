@@ -6,7 +6,7 @@ describe('ReviewText', () => {
   it('renders textarea with correct value', () => {
     const value = 'Test review text';
     render(<ReviewText value={value} />);
-    const textarea = screen.getByPlaceholderText('Review text') ;
+    const textarea = screen.getByPlaceholderText('Review text') as HTMLTextAreaElement;
     expect(textarea.value).toBe(value);
   });
 

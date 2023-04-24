@@ -12,7 +12,6 @@ const FilmCardFull = () => {
   const [film, setFilm] = useState<Films | null>(null);
   const { id } = useParams();
 
-
   useEffect( () => {
     axios.get<Films>(`https://12.react.pages.academy/wtw/films/${id as string}`)
       .then((res) => setFilm(res.data)
@@ -52,14 +51,7 @@ const FilmCardFull = () => {
           <div className="film-card__wrap film-card__translate-top">
             <div className="film-card__info">
               <FilmCardPoster posterImage={film.posterImage} name={film.name}/>
-              <FilmCardDesc
-                id={film.id}
-                rating={film.rating}
-                scoresCount={film.scoresCount}
-                starring={film.starring}
-                director={film.director}
-                description={film.description}
-              />
+              <FilmCardDesc/>
             </div>
           </div>
         </section>

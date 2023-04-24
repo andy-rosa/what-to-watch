@@ -5,14 +5,14 @@ import AddReviewForm from './AddReviewForm';
 describe('AddReviewForm', () => {
   it('should update text value on input change', () => {
     render(<AddReviewForm />);
-    const input = screen.getByPlaceholderText('Review text') ;
+    const input = screen.getByPlaceholderText('Review text') as HTMLInputElement;
     fireEvent.change(input, { target: { value: 'Test review text' } });
     expect(input.value).toBe('Test review text');
   });
 
   it('should update rating value on radio button change', () => {
     render(<AddReviewForm />);
-    const ratingRadio = screen.getByLabelText('Rating 4') ;
+    const ratingRadio = screen.getByLabelText('Rating 4') as HTMLInputElement;
     fireEvent.click(ratingRadio);
     expect(ratingRadio.checked).toBe(true);
   });
