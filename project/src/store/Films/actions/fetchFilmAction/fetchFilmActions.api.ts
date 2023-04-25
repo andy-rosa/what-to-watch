@@ -9,7 +9,7 @@ export const fetchFilmAction = createAsyncThunk<
     extra: AxiosInstance;
   }
 >(
-  'films/fetchFilmsSimilar',
+  'films/fetchFilm',
   async (id, { extra: api}) => {
     const response = await api.get<Films>(`films/${id}`);
     return response.data;

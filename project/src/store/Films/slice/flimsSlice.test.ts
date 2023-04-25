@@ -10,6 +10,7 @@ describe('filmsSlice reducer', () => {
   beforeEach(() => {
     initialState = {
       films: [],
+      film: null,
       isLoading: false,
       error: null,
     };

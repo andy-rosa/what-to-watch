@@ -18,7 +18,7 @@ const FilmCardButton = ({id}: Pick<Films, 'id'>) => (
       <span>My list</span>
       <span className="film-card__count">9</span>
     </button>
-    <Link to={RoutePath.add_review} className={'btn film-card__button'} >
+    <Link to={generatePath(RoutePath.add_review, {id})} className={'btn film-card__button'} >
         Add review
     </Link>
   </div>

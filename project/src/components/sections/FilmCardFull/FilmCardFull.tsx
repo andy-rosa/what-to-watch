@@ -1,22 +1,23 @@
-import React, {Suspense, useEffect, useState} from 'react';
+import React, {Suspense, useEffect} from 'react';
 import Header from '../../Headers/Header';
 import FilmCardDesc from '../../FilmFullCard/FilmCardDesc/FilmCardDesc';
 import FilmCardPoster from '../../FilmFullCard/FilmCardPoster/FilmCardPoster';
 import FilmCardButton from '../../FilmFullCard/FilmCardControllButton/FilmCardControllButton';
-import axios from 'axios';
-import {Films} from '../../../types/films';
 import {useParams} from 'react-router-dom';
 import Loader from '../../Loader/Loader';
+import {useAppDispatch} from '../../../hooks/useAppDispatch';
+import {useAppSelector} from '../../../hooks/useAppSelector';
+import {getFilm} from '../../../store/Films/selectors/getFilm/getFilm';
+import {fetchFilmAction} from '../../../store/Films/actions/fetchFilmAction/fetchFilmActions.api';
 
 const FilmCardFull = () => {
-  const [film, setFilm] = useState<Films | null>(null);
   const { id } = useParams();
+  const dispatch = useAppDispatch();
+  const film = useAppSelector(getFilm);
 
   useEffect( () => {
-    axios.get<Films>(`https://12.react.pages.academy/wtw/films/${id as string}`)
-      .then((res) => setFilm(res.data)
-      );
-  },[ id ]);
+    dispatch(fetchFilmAction(id as string));
+  },[ id, dispatch ]);
 
   const buildFilmFullCard = () => {
     if (!film) {
