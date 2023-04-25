@@ -7,9 +7,13 @@ import MockProviderWithComponent from '../../../helpers/decorators/MockProviderW
 
 describe('FilmCardButton', () => {
   const id = 123;
+  let filmCardButton: MockProviderWithComponent;
+
+  beforeEach(() => {
+    filmCardButton = new MockProviderWithComponent(<FilmCardButton id={id} />);
+  });
 
   it('renders a play button with a link to the player page', () => {
-    const filmCardButton = new MockProviderWithComponent(<FilmCardButton id={id} />);
     render(filmCardButton.renderTest());
 
     const playButton = screen.getByTestId('link-button-play');
@@ -19,7 +23,6 @@ describe('FilmCardButton', () => {
   });
 
   it('renders a "My list" button', () => {
-    const filmCardButton = new MockProviderWithComponent(<FilmCardButton id={id} />);
     render(filmCardButton.renderTest());
 
     const myListButton = screen.getByTestId('my-list-button');
@@ -28,11 +31,10 @@ describe('FilmCardButton', () => {
   });
 
   it('renders an "Add review" button with a link to the add review page', () => {
-    const filmCardButton = new MockProviderWithComponent(<FilmCardButton id={id} />);
     render(filmCardButton.renderTest());
 
     const addReviewButton = screen.getByText('Add review');
     expect(addReviewButton.tagName).toBe('A');
-    expect(addReviewButton.getAttribute('href')).toBe(RoutePath.add_review);
+    expect(addReviewButton.getAttribute('href')).toBe(`/films/${id}/review`);
   });
 });

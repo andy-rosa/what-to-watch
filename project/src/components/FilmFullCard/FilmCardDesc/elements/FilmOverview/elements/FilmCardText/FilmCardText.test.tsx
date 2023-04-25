@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import FilmCardText, { FilmCardTextProps } from './FilmCardText';
-import {Films} from '../../../../../types/films';
+import {Films} from '../../../../../../../types/films';
 
 const mockFilm: Pick<Films, FilmCardTextProps> = {
   description: 'A great film',

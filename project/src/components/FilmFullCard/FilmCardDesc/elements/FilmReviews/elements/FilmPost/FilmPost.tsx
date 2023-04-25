@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import React from 'react';
-import {Reviews} from '../../../../../types/reviews';
+import {Reviews} from '../../../../../../../types/reviews';
 
 
 const FilmPost = ({rating, comment, user, date}: Reviews) => (

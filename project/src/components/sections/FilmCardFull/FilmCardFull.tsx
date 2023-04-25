@@ -9,6 +9,7 @@ import {useAppDispatch} from '../../../hooks/useAppDispatch';
 import {useAppSelector} from '../../../hooks/useAppSelector';
 import {getFilm} from '../../../store/Films/selectors/getFilm/getFilm';
 import {fetchFilmAction} from '../../../store/Films/actions/fetchFilmAction/fetchFilmActions.api';
+import {fetchReviewsAction} from '../../../store/Reviews/actions/fetch-reviews/fetch-reviews-action.api';
 
 const FilmCardFull = () => {
   const { id } = useParams();
@@ -17,6 +18,7 @@ const FilmCardFull = () => {
 
   useEffect( () => {
     dispatch(fetchFilmAction(id as string));
+    dispatch(fetchReviewsAction(id as string));
   },[ id, dispatch ]);
 
   const buildFilmFullCard = () => {

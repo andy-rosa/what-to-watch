@@ -1,10 +1,10 @@
 import React from 'react';
 import FilmCardNav from './elements/FilmCardNav/FilmCardNav';
-import FilmReviews from '../FilmReviews/FilmReviews';
-import FilmOverview from '../FilmOverview/FilmOverview';
-import FilmDetails from '../FilmDetails/FilmDetails';
+import FilmReviews from './elements/FilmReviews/FilmReviews';
+import FilmOverview from './elements/FilmOverview/FilmOverview';
+import FilmDetails from './elements/FilmDetails/FilmDetails';
 
-export type ActiveDescription ='Overview' | 'Details' | 'Reviews';
+export type ActiveDescription = 'Overview' | 'Details' | 'Reviews';
 
 const FilmCardDesc = () => {
   const [activeTab, setActiveTab] = React.useState<ActiveDescription>('Overview');

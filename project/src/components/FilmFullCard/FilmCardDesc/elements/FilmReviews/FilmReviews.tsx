@@ -1,18 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import {Reviews} from '../../../types/reviews';
+import React from 'react';
+import {Reviews} from '../../../../../types/reviews';
 import FilmPost from './elements/FilmPost/FilmPost';
+import {useAppSelector} from '../../../../../hooks/useAppSelector';
+import {getReviewsFilm} from '../../../../../store/Reviews/selectors/getReviewsFilm/getReviewsFilm';
 
 const FilmReviews = () => {
-  const [posts, setPost] = useState<Reviews[]>([]);
-  const { id } = useParams();
-
-  useEffect(() => {
-    axios.get<Reviews[]>(`https://12.react.pages.academy/wtw/comments/${id as string}`).then(
-      (res) => setPost(res.data)
-    );
-  },[id]);
+  const posts = useAppSelector(getReviewsFilm);
 
   const renderPost = (post: Reviews) => (
     <FilmPost

@@ -1,13 +1,13 @@
 import React from 'react';
-import {Films} from '../../../types/films';
-import {transformDurationTime} from '../../../helpers/transformDurationTime';
-import {useAppSelector} from '../../../hooks/useAppSelector';
-import {getFilm} from '../../../store/Films/selectors/getFilm/getFilm';
+import {Films} from '../../../../../types/films';
+import {transformDurationTime} from '../../../../../helpers/transformDurationTime';
+import {useAppSelector} from '../../../../../hooks/useAppSelector';
+import {getFilm} from '../../../../../store/Films/selectors/getFilm/getFilm';
 
-type FilmDetails = Pick<Films, 'director' | 'starring' | 'runTime' | 'genre' | 'released'>
+type FilmDetailsPick = Pick<Films, 'director' | 'starring' | 'runTime' | 'genre' | 'released'>
 
 const FilmDetails = () => {
-  const {director, starring, runTime, released, genre} = useAppSelector(getFilm) as FilmDetails;
+  const {director, starring, runTime, released, genre} = useAppSelector(getFilm) as FilmDetailsPick;
 
   return (
     <div className="film-card__text film-card__row">

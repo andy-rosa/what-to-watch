@@ -1,6 +1,6 @@
 import React from 'react';
-import { getTextRating } from '../../../../../helpers/getTextRating';
-import {Films} from '../../../../../types/films';
+import { getTextRating } from '../../../../../../../helpers/getTextRating';
+import {Films} from '../../../../../../../types/films';
 
 export type FilmCardRatingProps = 'rating' | 'scoresCount'
 

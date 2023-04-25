@@ -2,26 +2,36 @@ import React from 'react';
 import {generatePath, Link} from 'react-router-dom';
 import {RoutePath} from '../../Routers/AppRouter/config/routerConfig';
 import {Films} from '../../../types/films';
+import {useAppSelector} from '../../../hooks/useAppSelector';
+import {getUserAuthStatus} from '../../../store/User/selectors/getUserAuthStatus/getUserAuthStatus';
+import {AuthorizationStatus} from '../../../types/user';
 
-const FilmCardButton = ({id}: Pick<Films, 'id'>) => (
-  <div className="film-card__buttons">
-    <Link to={generatePath(RoutePath.player, {id})} className="btn btn--play film-card__button" data-testid={'link-button-play'}>
-      <svg viewBox="0 0 19 19" width="19" height="19">
-        <use xlinkHref="#play-s"></use>
-      </svg>
-      <span>Play</span>
-    </Link >
-    <button className="btn btn--list film-card__button" type="button" data-testid={'my-list-button'}>
-      <svg viewBox="0 0 19 20" width="19" height="20">
-        <use xlinkHref="#add"></use>
-      </svg>
-      <span>My list</span>
-      <span className="film-card__count">9</span>
-    </button>
-    <Link to={generatePath(RoutePath.add_review, {id})} className={'btn film-card__button'} >
+const FilmCardButton = ({id}: Pick<Films, 'id'>) => {
+  const authStatus = useAppSelector(getUserAuthStatus);
+
+  return (
+    <div className="film-card__buttons">
+      <Link to={generatePath(RoutePath.player, {id})} className="btn btn--play film-card__button"
+        data-testid={'link-button-play'}
+      >
+        <svg viewBox="0 0 19 19" width="19" height="19">
+          <use xlinkHref="#play-s"></use>
+        </svg>
+        <span>Play</span>
+      </Link>
+      <button className="btn btn--list film-card__button" type="button" data-testid={'my-list-button'}>
+        <svg viewBox="0 0 19 20" width="19" height="20">
+          <use xlinkHref="#add"></use>
+        </svg>
+        <span>My list</span>
+        <span className="film-card__count">9</span>
+      </button>
+      {authStatus === AuthorizationStatus.Auth &&
+        <Link to={generatePath(RoutePath.add_review, {id})} className={'btn film-card__button'}>
         Add review
-    </Link>
-  </div>
-);
+        </Link>}
+    </div>
+  );
+};
 
 export default FilmCardButton;

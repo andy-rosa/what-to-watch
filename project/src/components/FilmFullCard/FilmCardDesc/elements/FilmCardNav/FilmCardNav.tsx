@@ -15,7 +15,7 @@ const FilmCardNav = ({changeActiveTab, activeTab}: FilmCardNavProps) => {
   return (
     <nav className="film-nav film-card__nav" data-testid={'film-card-nav'}>
       <ul className="film-nav__list">
-        <li className={`film-nav__item ${activeTab === 'Overview' && 'film-nav__item--active'}`}>
+        <li className={`film-nav__item ${ activeTab === 'Overview' ? 'film-nav__item--active' : ''}`}>
           <a href="project/src/components/FilmFullCard/FilmCardDesc/elements#"
             className="film-nav__link"
             onClick={handleTabClick}
@@ -23,7 +23,7 @@ const FilmCardNav = ({changeActiveTab, activeTab}: FilmCardNavProps) => {
             Overview
           </a>
         </li>
-        <li className={`film-nav__item ${activeTab === 'Details' && 'film-nav__item--active'}`}>
+        <li className={`film-nav__item ${activeTab === 'Details' ? 'film-nav__item--active' : ''}`}>
           <a href="project/src/components/FilmFullCard/FilmCardDesc/elements#"
             className="film-nav__link"
             onClick={handleTabClick}
@@ -31,7 +31,7 @@ const FilmCardNav = ({changeActiveTab, activeTab}: FilmCardNavProps) => {
             Details
           </a>
         </li>
-        <li className={`film-nav__item ${activeTab === 'Reviews' && 'film-nav__item--active'}`}>
+        <li className={`film-nav__item ${activeTab === 'Reviews' ? 'film-nav__item--active' : ''}`}>
           <a href="project/src/components/FilmFullCard/FilmCardDesc/elements#"
             className="film-nav__link"
             data-testid={'review-link'}
