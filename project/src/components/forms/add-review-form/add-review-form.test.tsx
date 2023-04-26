@@ -2,7 +2,7 @@ import React from 'react';
 import {render, fireEvent, screen} from '@testing-library/react';
 import AddReviewForm from './add-review-form';
 import MockProviderWithComponent
-  from '../../../helpers/decorators/mock-provider-with-component/mock-provider-with-component';
+  from '../../../hoc/mock-provider-with-component/mock-provider-with-component';
 /* eslint-disable */
 
 describe('AddReviewForm', () => {

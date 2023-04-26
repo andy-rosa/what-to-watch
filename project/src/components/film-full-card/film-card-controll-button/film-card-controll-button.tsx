@@ -24,7 +24,7 @@ const FilmCardButton = ({id}: Pick<Films, 'id'>) => {
     if (authStatus === AuthorizationStatus.Auth) {
       dispatch(fetchFavoriteListAction());
     }
-  });
+  }, []);
 
   const handleFavoriteFilmAdd = () => {
     if (authStatus !== AuthorizationStatus.Auth) {

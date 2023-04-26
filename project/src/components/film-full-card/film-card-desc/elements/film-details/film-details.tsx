@@ -21,9 +21,9 @@ const FilmDetails = () => {
           <span className="film-card__details-value">
             {
               starring.map((name) => (
-                <>
+                <span key={name}>
                   {name}, <br/>
-                </>))
+                </span>))
             }
           </span>
         </p>

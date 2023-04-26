@@ -1,5 +1,5 @@
 import axios, {AxiosError, AxiosInstance, AxiosRequestConfig} from 'axios';
-import {getToken} from './localStorage/token';
+import {getToken} from './local-storage/token';
 import {toast} from 'react-toastify';
 
 const BACKEND_URL = ' https://12.react.pages.academy/wtw';

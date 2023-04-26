@@ -3,7 +3,7 @@ import SignInForm from './sign-in-form';
 import { AuthorizationStatus } from '../../../types/user';
 import { RoutePath } from '../../routers/app-router/config/router-config';
 import { loginAction } from '../../../store/user/actions/login/login.api';
-import MockProviderWithComponent from '../../../helpers/decorators/mock-provider-with-component/mock-provider-with-component';
+import MockProviderWithComponent from '../../../hoc/mock-provider-with-component/mock-provider-with-component';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { useAppSelector } from '../../../hooks/useAppSelector';
 /* eslint-disable */

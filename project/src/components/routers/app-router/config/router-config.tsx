@@ -30,7 +30,7 @@ export const RoutePath: Record<AppRoute, string> = {
 
 export type AppRouteKey = keyof typeof RoutePath;
 
-export const routeConfig: RouteObject[] = [
+export const routes: RouteObject[] = [
   {
     index: true,
     element: < MainPage />

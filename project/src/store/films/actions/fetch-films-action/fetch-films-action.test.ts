@@ -7,16 +7,15 @@ import {RootState} from '../../../../types/root-state';
 import {Action, ThunkDispatch} from '@reduxjs/toolkit';
 
 describe('fetch-films-action.test', () => {
-  // Я тут не понял что наделал, но вроде работает
   const api = createAPI();
   const mockAPI = new MockAdapter(api);
-  const middleware = [thunk.withExtraArgument(api)];
+  const middlewares = [thunk.withExtraArgument(api)];
 
   const mockStore = configureMockStore<
     RootState,
     Action<string>,
     ThunkDispatch<RootState, typeof api, Action>
-  >(middleware);
+  >(middlewares);
 
   test('request status: 200',async () => {
     const store = mockStore();
