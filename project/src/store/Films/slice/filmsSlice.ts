@@ -5,6 +5,7 @@ import { fetchFilmsSimilarAction } from '../actions/fetchFilmsSimilarAction/fetc
 import {fetchFilmAction} from '../actions/fetchFilmAction/fetchFilmActions.api';
 import {changeFavoriteFilmStatusAction} from '../actions/changeFavoriteFilmStatusAction/changeFavoriteFilmStatus.api';
 import {fetchFavoriteListAction} from '../actions/fetchFavoriteListAction/fetchFavoriteListAction.api';
+import {fetchPromoFilmAction} from '../actions/fetchPromoFilmAction/fetchPromoFilmAction.api';
 
 const initialState: FilmsState = {
   films: [],
@@ -12,6 +13,7 @@ const initialState: FilmsState = {
   error: null,
   film: null,
   favoriteList: [],
+  promoFilm: null
 };
 
 const filmsSlice = createSlice({
@@ -59,6 +61,13 @@ const filmsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchFavoriteListAction.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchPromoFilmAction.fulfilled, (state, action) => {
+        state.promoFilm = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(fetchPromoFilmAction.pending, (state) => {
         state.isLoading = true;
       });
   }

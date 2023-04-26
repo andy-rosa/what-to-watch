@@ -5,7 +5,7 @@ import Catalog from '../../../components/sections/Catalog/Catalog';
 
 const MainPage = (): JSX.Element => (
   <div data-testid={'home-page'}>
-    <MainFilmCard title={'The Grand Budapest Hotel'} genre={'Drama'} year={2014} />
+    <MainFilmCard />
 
     <div className="page-content">
       <Catalog />
