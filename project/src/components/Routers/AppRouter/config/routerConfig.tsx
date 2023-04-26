@@ -26,8 +26,9 @@ export const RoutePath: Record<AppRoute, string> = {
   [AppRoute.SIGN_IN]: '/login',
   [AppRoute.ADD_REVIEW]: '/films/:id/review',
   [AppRoute.NOT_FOUND]: '*',
-};
+} as const;
 
+export type AppRouteKey = keyof typeof RoutePath;
 
 export const routeConfig: RouteObject[] = [
   {

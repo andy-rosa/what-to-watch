@@ -24,7 +24,7 @@ export const GenreFilter: Record<GenreName, string> = {
   [GenreName.THRILLERS]: 'Thriller',
 } as const;
 
-export type GenresFilter = typeof GenreFilter[keyof typeof GenreFilter];
+export type GenresFilter = keyof typeof GenreFilter;
 
 export interface GenreState {
   selected: GenreName;

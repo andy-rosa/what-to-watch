@@ -1,24 +1,25 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import Header from '../../../components/Headers/Header';
 import AddReviewForm from '../../../components/Forms/AddReviewForm/AddReviewForm';
-import {useParams} from 'react-router-dom';
-import axios from 'axios';
-import {Films} from '../../../types/films';
+
+import {useAppSelector} from '../../../hooks/useAppSelector';
+import {getFilm} from '../../../store/Films/selectors/getFilm/getFilm';
+import {fetchFilmAction} from '../../../store/Films/actions/fetchFilmAction/fetchFilmActions.api';
+import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { useParams } from 'react-router-dom';
 
 const AddReviewPage = () => {
-  const [film, setFilm] = useState<Films | null>(null);
-
+  const film = useAppSelector(getFilm);
+  const dispatch = useAppDispatch();
   const { id } = useParams();
 
   useEffect( () => {
-    axios.get<Films>(`https://12.react.pages.academy/wtw/films/${id as string}`)
-      .then((res) => setFilm(res.data)
-      );
-  },[ id ]);
+    dispatch(fetchFilmAction(id as string));
+  },[ id, dispatch ]);
 
   return (
     <div>
-      { film &&
+      {film &&
       <section className="film-card film-card--full" style={{backgroundColor: film.backgroundColor}}>
         <div className="film-card__header">
           <div className="film-card__bg">
@@ -33,8 +34,7 @@ const AddReviewPage = () => {
             />
           </div>
         </div>
-
-        <AddReviewForm/>
+        <AddReviewForm />
       </section>}
     </div>
   );

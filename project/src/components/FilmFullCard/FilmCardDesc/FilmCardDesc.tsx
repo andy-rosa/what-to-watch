@@ -1,17 +1,31 @@
 import React from 'react';
-import FilmCardNav, {FilmCardNavProps} from './elements/FilmCardNav';
-import FilmCardRating, {FilmCardRatingProps} from './elements/FilmCardRating';
-import FilmCardText, {FilmCardTextProps} from './elements/FilmCardText';
-import {Films} from '../../../types/films';
+import FilmCardNav from './elements/FilmCardNav/FilmCardNav';
+import FilmReviews from './elements/FilmReviews/FilmReviews';
+import FilmOverview from './elements/FilmOverview/FilmOverview';
+import FilmDetails from './elements/FilmDetails/FilmDetails';
 
-export type FilmCardDescProps = Pick<Films, FilmCardRatingProps | FilmCardTextProps | FilmCardNavProps>
+export type ActiveDescription = 'Overview' | 'Details' | 'Reviews';
 
-const FilmCardDesc = ({rating, scoresCount, director, starring, description, id }: FilmCardDescProps ) => (
-  <div className="film-card__desc">
-    <FilmCardNav id={id}/>
-    <FilmCardRating rating={rating} scoresCount={scoresCount}/>
-    <FilmCardText description={description} director={director} starring={starring}/>
-  </div>
-);
+const FilmCardDesc = () => {
+  const [activeTab, setActiveTab] = React.useState<ActiveDescription>('Overview');
+
+  const getActiveInfo = () => {
+    switch (activeTab) {
+      case 'Overview':
+        return <FilmOverview />;
+      case 'Details':
+        return <FilmDetails />;
+      case 'Reviews':
+        return <FilmReviews/>;
+    }
+  };
+
+  return (
+    <div className="film-card__desc">
+      <FilmCardNav changeActiveTab={setActiveTab} activeTab={activeTab}/>
+      {getActiveInfo()}
+    </div>
+  );
+};
 
 export default FilmCardDesc;

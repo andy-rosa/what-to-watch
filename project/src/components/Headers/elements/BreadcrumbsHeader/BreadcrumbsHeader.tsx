@@ -15,7 +15,7 @@ const BreadcrumbsHeader = () => {
   },[id]);
 
   return (
-    <nav className="breadcrumbs">
+    <nav className="breadcrumbs" data-testid='breadcrumbs-header'>
       <ul className="breadcrumbs__list">
         <li className="breadcrumbs__item">
           <Link to={generatePath(RoutePath.film, {id})} className="breadcrumbs__link">{breadcrumb}</Link>

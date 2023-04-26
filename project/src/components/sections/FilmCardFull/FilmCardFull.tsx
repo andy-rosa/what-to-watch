@@ -1,23 +1,25 @@
-import React, {Suspense, useEffect, useState} from 'react';
+import React, {Suspense, useEffect} from 'react';
 import Header from '../../Headers/Header';
 import FilmCardDesc from '../../FilmFullCard/FilmCardDesc/FilmCardDesc';
 import FilmCardPoster from '../../FilmFullCard/FilmCardPoster/FilmCardPoster';
 import FilmCardButton from '../../FilmFullCard/FilmCardControllButton/FilmCardControllButton';
-import axios from 'axios';
-import {Films} from '../../../types/films';
 import {useParams} from 'react-router-dom';
 import Loader from '../../Loader/Loader';
+import {useAppDispatch} from '../../../hooks/useAppDispatch';
+import {useAppSelector} from '../../../hooks/useAppSelector';
+import {getFilm} from '../../../store/Films/selectors/getFilm/getFilm';
+import {fetchFilmAction} from '../../../store/Films/actions/fetchFilmAction/fetchFilmActions.api';
+import {fetchReviewsAction} from '../../../store/Reviews/actions/fetch-reviews/fetch-reviews-action.api';
 
 const FilmCardFull = () => {
-  const [film, setFilm] = useState<Films | null>(null);
   const { id } = useParams();
-
+  const dispatch = useAppDispatch();
+  const film = useAppSelector(getFilm);
 
   useEffect( () => {
-    axios.get<Films>(`https://12.react.pages.academy/wtw/films/${id as string}`)
-      .then((res) => setFilm(res.data)
-      );
-  },[ id ]);
+    dispatch(fetchFilmAction(id as string));
+    dispatch(fetchReviewsAction(id as string));
+  },[ id, dispatch ]);
 
   const buildFilmFullCard = () => {
     if (!film) {
@@ -44,7 +46,7 @@ const FilmCardFull = () => {
                   <span className="film-card__year">{film.released}</span>
                 </p>
 
-                <FilmCardButton id={film.id}/>
+                <FilmCardButton id={film.id} />
               </div>
             </div>
           </div>
@@ -52,14 +54,7 @@ const FilmCardFull = () => {
           <div className="film-card__wrap film-card__translate-top">
             <div className="film-card__info">
               <FilmCardPoster posterImage={film.posterImage} name={film.name}/>
-              <FilmCardDesc
-                id={film.id}
-                rating={film.rating}
-                scoresCount={film.scoresCount}
-                starring={film.starring}
-                director={film.director}
-                description={film.description}
-              />
+              <FilmCardDesc/>
             </div>
           </div>
         </section>

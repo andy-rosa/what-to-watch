@@ -3,7 +3,7 @@ import {generatePath, Link} from 'react-router-dom';
 import {Films} from '../../types/films';
 import cls from './FilmsCard.module.css';
 import {RoutePath} from '../Routers/AppRouter/config/routerConfig';
-import CardToggle from './elements/CardToggle';
+import CardToggle from './elements/CardToggle/CardToggle';
 
 export type FilmCardProps = Pick<Films, 'name' | 'posterImage' | 'id' | 'videoLink' >
 
@@ -27,6 +27,7 @@ const FilmCard = ({name, posterImage, id, videoLink}: FilmCardProps): JSX.Elemen
       <Link
         to={generatePath(RoutePath.film, {id})}
         className={cls.wrapper}
+        data-testid="link-to-film"
       >
         <CardToggle
           isActive={isActive}

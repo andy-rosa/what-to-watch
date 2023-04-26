@@ -1,5 +1,6 @@
-import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
+import axios, {AxiosError, AxiosInstance, AxiosRequestConfig} from 'axios';
 import {getToken} from './localStorage/token';
+import {toast} from 'react-toastify';
 
 const BACKEND_URL = ' https://12.react.pages.academy/wtw';
 const REQUEST_TIMEOUT = 5000;
@@ -18,6 +19,15 @@ export const createAPI = (): AxiosInstance => {
       }
       return config;
     });
+
+  api.interceptors.response.use(
+    (response) => response,
+    (error: AxiosError<{ error: string }>) => {
+      if (error.response) {
+        toast.error(error.response.data.error);
+      }
+    }
+  );
 
   return api;
 };

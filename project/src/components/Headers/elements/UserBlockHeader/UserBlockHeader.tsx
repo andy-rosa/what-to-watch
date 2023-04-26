@@ -16,7 +16,7 @@ const UserBlockHeader = () => {
   };
 
   return (
-    <ul className="user-block">
+    <ul className="user-block" data-testid='user-block-header'>
       {avatar &&
         <li className="user-block__item">
           <Link to={RoutePath.my_list}>

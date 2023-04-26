@@ -10,3 +10,9 @@ export interface Reviews {
   rating: number;
   user: UserPost;
 }
+
+export interface ReviewsState {
+  reviews: Reviews[];
+  isLoading: boolean;
+  error: string | null;
+}
