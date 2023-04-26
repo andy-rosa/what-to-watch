@@ -18,7 +18,7 @@ const FavoriteList = () => {
 
   useEffect(() => {
     dispatch(fetchFavoriteListAction());
-  });
+  }, []);
 
   const createFilmCard = ({posterImage, id, name, videoLink}: FilmCardProps) => (
     <FilmCard

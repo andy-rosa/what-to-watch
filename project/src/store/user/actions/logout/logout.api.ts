@@ -1,6 +1,6 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import {removeToken} from '../../../../api/localStorage/token';
+import {removeToken} from '../../../../api/local-storage/token';
 
 export const logoutAction = createAsyncThunk<
   void,

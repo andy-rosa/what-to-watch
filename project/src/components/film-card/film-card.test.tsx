@@ -2,7 +2,7 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import { generatePath } from 'react-router-dom';
 import FilmCard, { FilmCardProps } from './film-card';
 import { RoutePath } from '../routers/app-router/config/router-config';
-import MockProviderWithComponent from '../../helpers/decorators/mock-provider-with-component/mock-provider-with-component';
+import MockProviderWithComponent from '../../hoc/mock-provider-with-component/mock-provider-with-component';
 
 const mockFilm: FilmCardProps = {
   name: 'The Godfather',

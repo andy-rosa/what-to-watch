@@ -7,21 +7,6 @@ export function generateFilmsListMock(length: FilmsListLength): Films[] {
   return Array.from({length}, (_, id) => ({
     id: id ,
     name: `Film ${id}`,
-    // posterImage: '',
-    // previewImage: '',
-    // backgroundImage: '',
-    // backgroundColor: '',
-    // videoLink: '',
-    // previewVideoLink: '',
-    // description: '',
-    // rating: Math.round(Math.random() * 10),
-    // scoresCount: 0,
-    // director: '',
-    // starring: [],
-    // runTime: 0,
-    // genre: GenreName.CRIME,
-    // released: 0,
-    // isFavorite: false
   })) as Films[];
 }
 

@@ -1,7 +1,7 @@
 import {Provider} from 'react-redux';
-import {store} from '../../../store';
+import {store} from '../../store';
 import {MemoryRouter, Route, Routes} from 'react-router-dom';
-import {AppRouteKey, RoutePath} from '../../../components/routers/app-router/config/router-config';
+import {AppRouteKey, RoutePath} from '../../components/routers/app-router/config/router-config';
 import React, {ReactNode} from 'react';
 
 class MockProviderWithComponent {

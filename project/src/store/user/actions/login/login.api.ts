@@ -1,7 +1,7 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AxiosInstance} from 'axios';
 import {User} from '../../../../types/user';
-import {setToken} from '../../../../api/localStorage/token';
+import {setToken} from '../../../../api/local-storage/token';
 
 export interface UserAuthPost {
   email: string;

@@ -3,7 +3,7 @@ import { render, screen} from '@testing-library/react';
 import { generatePath } from 'react-router-dom';
 import { RoutePath } from '../../routers/app-router/config/router-config';
 import FilmCardButton from './film-card-controll-button';
-import MockProviderWithComponent from '../../../helpers/decorators/mock-provider-with-component/mock-provider-with-component';
+import MockProviderWithComponent from '../../../hoc/mock-provider-with-component/mock-provider-with-component';
 
 describe('FilmCardButton', () => {
   const id = 123;

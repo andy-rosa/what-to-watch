@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Header from './header';
 import { RoutePath } from '../routers/app-router/config/router-config';
-import MockProviderWithComponent from '../../helpers/decorators/mock-provider-with-component/mock-provider-with-component';
+import MockProviderWithComponent from '../../hoc/mock-provider-with-component/mock-provider-with-component';
 
 
 describe('Header', () => {
