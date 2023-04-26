@@ -1,5 +1,5 @@
 import React from 'react';
-import {transformDurationVideo} from '../../../../helpers/transformDurationVideo';
+import {transformDurationVideo} from '../../../helpers/transformDurationVideo';
 import cls from './TimePlayer.module.css';
 
 interface TimePlayerProps {

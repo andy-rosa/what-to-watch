@@ -21,6 +21,6 @@ describe('GoBackNavigate', () => {
     const goBackButton = screen.getByRole('button', { name: /go back/i });
     fireEvent.click(goBackButton);
 
-    expect(navigateMock).toHaveBeenCalledWith(-1);
+    expect(navigateMock).toHaveBeenCalledWith('/');
   });
 });

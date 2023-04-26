@@ -5,8 +5,8 @@ import {getFilm} from '../../../store/Films/selectors/getFilm/getFilm';
 import {useAppDispatch} from '../../../hooks/useAppDispatch';
 import {fetchFilmAction} from '../../../store/Films/actions/fetchFilmAction/fetchFilmActions.api';
 import {RoutePath} from '../../../components/Routers/AppRouter/config/routerConfig';
-import TimePlayer from '../../../components/Player/elements/TimePlayer/TimePlayer';
-import ButtonPlayer from '../../../components/Player/elements/ButtonPlayer/ButtonPlayer';
+import TimePlayer from '../../../components/Player/TimePlayer/TimePlayer';
+import ButtonPlayer from '../../../components/Player/ButtonPlayer/ButtonPlayer';
 
 const PlayerPage = () => {
   const {id} = useParams();

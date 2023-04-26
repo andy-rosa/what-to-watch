@@ -12,25 +12,27 @@ const mockFilm: FilmCardProps = {
 };
 
 describe('FilmCard', () => {
+  let filmCard: MockProviderWithComponent;
+
+  beforeEach(() => {
+    filmCard = new MockProviderWithComponent(<FilmCard {...mockFilm} />);
+  });
 
   it('should render film card with correct details', () => {
-    const filmCard = new MockProviderWithComponent(<FilmCard {...mockFilm} />);
     render(filmCard.renderTest());
     expect(screen.getByText(mockFilm.name)).toBeInTheDocument();
   });
 
   it('should navigate to film details page when clicked', () => {
-    const filmCard = new MockProviderWithComponent(<FilmCard {...mockFilm} />);
     render(filmCard.renderTest());
     const filmCardLink = screen.getByTestId('link-to-film');
     expect(filmCardLink.getAttribute('href')).toBe(generatePath(RoutePath.film, { id: mockFilm.id }));
   });
 
   it('should play video when hovered over', () => {
-    const filmCardComponent = new MockProviderWithComponent(<FilmCard {...mockFilm} />);
-    render(filmCardComponent.renderTest());
-    const filmCard = screen.getByRole('article');
-    fireEvent.mouseOver(filmCard);
+    render(filmCard.renderTest());
+    const filmCardComponent = screen.getByRole('article');
+    fireEvent.mouseOver(filmCardComponent);
     expect(screen.getByText(`${mockFilm.name}`)).toBeInTheDocument();
   });
 });
