@@ -46,7 +46,7 @@ const FilmCardFull = () => {
                   <span className="film-card__year">{film.released}</span>
                 </p>
 
-                <FilmCardButton id={film.id}/>
+                <FilmCardButton id={film.id} />
               </div>
             </div>
           </div>

@@ -13,6 +13,7 @@ describe('filmsSlice reducer', () => {
       film: null,
       isLoading: false,
       error: null,
+      favoriteList: [],
     };
   });
 

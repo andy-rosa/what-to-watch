@@ -25,4 +25,5 @@ export interface FilmsState {
   isLoading: boolean;
   error: string | null;
   film: Films | null;
+  favoriteList: Films[];
 }
