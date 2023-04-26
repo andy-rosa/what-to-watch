@@ -26,4 +26,5 @@ export interface FilmsState {
   error: string | null;
   film: Films | null;
   favoriteList: Films[];
+  promoFilm: Films | null;
 }
