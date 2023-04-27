@@ -1,6 +1,6 @@
-import React, {SyntheticEvent} from 'react';
+import {SyntheticEvent} from 'react';
 import {GenreName} from '../../../../../types/genre';
-import {useAppDispatch} from '../../../../../hooks/useAppDispatch';
+import {useAppDispatch} from '../../../../../hooks/use-app-dispatch';
 import {useSelector} from 'react-redux';
 import {getGenreSelected} from '../../../../../store/genre/selectors/get-genre-selected/get-genre-selected';
 import {genreActions} from '../../../../../store/genre/slice/genre-slice';

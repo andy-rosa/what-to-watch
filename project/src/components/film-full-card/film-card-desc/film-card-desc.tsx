@@ -1,13 +1,13 @@
-import React from 'react';
 import FilmCardNav from './elements/film-card-nav/film-card-nav';
 import FilmReviews from './elements/film-reviews/film-reviews';
 import FilmOverview from './elements/film-overview/film-overview';
 import FilmDetails from './elements/film-details/film-details';
+import {useState} from 'react';
 
 export type ActiveDescription = 'Overview' | 'Details' | 'Reviews';
 
 const FilmCardDesc = () => {
-  const [activeTab, setActiveTab] = React.useState<ActiveDescription>('Overview');
+  const [activeTab, setActiveTab] = useState<ActiveDescription>('Overview');
 
   const getActiveInfo = () => {
     switch (activeTab) {

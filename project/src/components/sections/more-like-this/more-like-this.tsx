@@ -1,4 +1,3 @@
-import React from 'react';
 import CatalogFilmsList from '../../catalogs/catalog-films-list/catalog-films-list';
 
 const MoreLikeThis = () => (

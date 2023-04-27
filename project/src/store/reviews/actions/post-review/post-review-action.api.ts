@@ -6,6 +6,7 @@ interface PostReview {
   body: {
     comment: string;
     rating: number;
+    navigate: () => void;
   };
   id: string;
 }
@@ -18,8 +19,9 @@ export const postReviewAction = createAsyncThunk<
   }
 >(
   'reviews/postReview',
-  async ({id, body}, { extra: api}) => {
-    const response = await api.post<Reviews[]>(`comments/${id}`, body);
+  async ({id, body: {comment, rating, navigate}}, { extra: api}) => {
+    const response = await api.post<Reviews[]>(`comments/${id}`, {comment, rating});
+    navigate();
     return response.data;
   }
 );

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import LogoHeader from './elements/logo-header/logo-header';
 import UserBlockHeader from './elements/user-block-header/user-block-header';
 import TitleHeader from './elements/title-header/title-header';

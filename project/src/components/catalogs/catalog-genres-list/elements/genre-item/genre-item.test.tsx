@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import GenreItem, { GenreItemProps } from './genre-item';
 import { genreActions } from '../../../../../store/genre/slice/genre-slice';

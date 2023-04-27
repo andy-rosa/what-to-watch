@@ -1,4 +1,4 @@
-import React, {PropsWithChildren} from 'react';
+import {PropsWithChildren} from 'react';
 import cls from './text-error.module.css';
 
 const TextError = ({children}: PropsWithChildren) => (

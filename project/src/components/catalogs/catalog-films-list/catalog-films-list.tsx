@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import FilmCard, {FilmCardProps} from '../../film-card/film-card';
 import {useParams} from 'react-router-dom';
-import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { useAppDispatch } from '../../../hooks/use-app-dispatch';
 import {getFilteredFilms} from '../../../store/films/selectors/get-filtered-films/get-filtered-films';
 import {getNonRepeatFilmCard} from '../../../helpers/get-non-repeat-films-card';
 import Loader from '../../loader/loader';
-import {useAppSelector} from '../../../hooks/useAppSelector';
+import {useAppSelector} from '../../../hooks/use-app-selector';
 import { fetchFilmsSimilarAction } from '../../../store/films/actions/fetch-films-similar-action/fetch-films-similar-action.api';
 import { fetchFilmsAction } from '../../../store/films/actions/fetch-films-action/fetch-films-action.api';
 import {STEP} from '../../sections/catalog/catalog';

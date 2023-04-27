@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface ButtonPlayerProps {
   handlePlayControlClick: () => void;
   handleFullscreenClick: () => void;

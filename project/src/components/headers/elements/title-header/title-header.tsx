@@ -1,4 +1,4 @@
-import React, {PropsWithChildren} from 'react';
+import {PropsWithChildren} from 'react';
 
 const TitleHeader = ({children}: PropsWithChildren ) => (
   <h1 className="page-title user-page__title">

@@ -1,10 +1,11 @@
-import React, {memo, SyntheticEvent, useCallback, useState} from 'react';
+import {memo, SyntheticEvent, useCallback, useState} from 'react';
 import ReviewText from './elements/review-text/review-text';
 import ReviewRating from './elements/review-rating/review-rating';
-import {useAppDispatch} from '../../../hooks/useAppDispatch';
-import {useParams} from 'react-router-dom';
+import {useAppDispatch} from '../../../hooks/use-app-dispatch';
+import {generatePath, useNavigate, useParams} from 'react-router-dom';
 import {postReviewAction} from '../../../store/reviews/actions/post-review/post-review-action.api';
 import TextError from '../../text-error/text-error';
+import {RoutePath} from '../../routers/app-router/config/router-config';
 
 
 enum Error {
@@ -17,6 +18,7 @@ enum Error {
 const AddReviewForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const {id} = useParams();
+  const navigate = useNavigate();
 
   const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -24,13 +26,14 @@ const AddReviewForm = (): JSX.Element => {
       id: id as string,
       body: {
         rating: Number(rating),
-        comment: text
+        comment: text,
+        navigate: () => navigate(generatePath(RoutePath.film, {id}))
       }
     }));
   };
   const [text, setText] = useState('');
   const [rating, setRating] = useState('');
-  const [error, setError] = React.useState({
+  const [error, setError] = useState({
     comment: Error.None
   });
 

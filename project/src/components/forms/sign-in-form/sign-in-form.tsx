@@ -1,8 +1,8 @@
 import {ChangeEvent, FormEvent, useEffect, useState} from 'react';
 import SignInField from './elements/sign-in-field/sign-in-field';
 import {loginAction, UserAuthPost} from '../../../store/user/actions/login/login.api';
-import {useAppDispatch} from '../../../hooks/useAppDispatch';
-import {useAppSelector} from '../../../hooks/useAppSelector';
+import {useAppDispatch} from '../../../hooks/use-app-dispatch';
+import {useAppSelector} from '../../../hooks/use-app-selector';
 import {getUserAuthStatus} from '../../../store/user/selectors/get-user-auth-status/get-user-auth-status';
 import {useNavigate} from 'react-router-dom';
 import {AuthorizationStatus} from '../../../types/user';

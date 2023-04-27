@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import {useEffect, useRef} from 'react';
 import {FilmCardProps} from '../../film-card';
 
 type CardPlayerProps = Pick<FilmCardProps, 'videoLink'> & {

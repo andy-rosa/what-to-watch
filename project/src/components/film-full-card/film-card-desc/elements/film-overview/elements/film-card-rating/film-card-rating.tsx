@@ -1,4 +1,3 @@
-import React from 'react';
 import { getTextRating } from '../../../../../../../helpers/get-text-rating';
 import {Films} from '../../../../../../../types/films';
 

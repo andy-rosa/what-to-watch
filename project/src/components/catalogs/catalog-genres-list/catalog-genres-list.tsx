@@ -1,4 +1,3 @@
-import React from 'react';
 import { GenreName } from '../../../types/genre';
 import GenreItem from './elements/genre-item/genre-item';
 

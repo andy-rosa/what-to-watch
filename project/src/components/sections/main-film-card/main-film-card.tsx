@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import Header from '../../headers/header';
-import {useAppSelector} from '../../../hooks/useAppSelector';
+import {useAppSelector} from '../../../hooks/use-app-selector';
 import {getPromoFilm} from '../../../store/films/selectors/get-promo-film/get-promo-film';
-import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { useAppDispatch } from '../../../hooks/use-app-dispatch';
 import {fetchPromoFilmAction} from '../../../store/films/actions/fetch-promo-film-action/fetch-promo-film-action.api';
 import {generatePath, Link, useNavigate} from 'react-router-dom';
 import {RoutePath} from '../../routers/app-router/config/router-config';
@@ -17,14 +17,17 @@ import {
   ChangeType
 } from '../../../store/films/actions/change-favorite-film-status-action/change-favorite-film-status-action.api';
 import {getFilm} from '../../../store/films/selectors/get-film/get-film';
+import {Films} from '../../../types/films';
 
 const MainFilmCard = () => {
   const dispatch = useAppDispatch();
-  const film = useAppSelector(getPromoFilm);
+  const film = useAppSelector(getPromoFilm) as Films;
   const authStatus = useAppSelector(getUserAuthStatus);
   const favoriteFilm = useAppSelector(getFilm);
   const favoriteListCounter = useAppSelector(getFavoriteListFilm).length;
   const navigate = useNavigate();
+  const {id} = film;
+
 
   const handleFavoriteFilmAdd = () => {
     if (authStatus !== AuthorizationStatus.Auth) {
@@ -46,8 +49,6 @@ const MainFilmCard = () => {
   if (!film) {
     return null;
   }
-
-  const {id} = film;
 
   return (
     <section className="film-card">

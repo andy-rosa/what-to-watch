@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {generatePath, Link, useLocation} from 'react-router-dom';
 import axios from 'axios';
 import {Films} from '../../../../types/films';

@@ -4,13 +4,13 @@ import { AuthorizationStatus } from '../../../types/user';
 import { RoutePath } from '../../routers/app-router/config/router-config';
 import { loginAction } from '../../../store/user/actions/login/login.api';
 import MockProviderWithComponent from '../../../hoc/mock-provider-with-component/mock-provider-with-component';
-import { useAppDispatch } from '../../../hooks/useAppDispatch';
-import { useAppSelector } from '../../../hooks/useAppSelector';
+import { useAppDispatch } from '../../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../../hooks/use-app-selector';
 /* eslint-disable */
 
 jest.mock('../../../store/user/actions/login/login.api');
-jest.mock('../../../hooks/useAppDispatch');
-jest.mock('../../../hooks/useAppSelector');
+jest.mock('../../../hooks/use-app-dispatch');
+jest.mock('../../../hooks/use-app-selector');
 
 describe('SignInForm', () => {
   beforeEach(() => {

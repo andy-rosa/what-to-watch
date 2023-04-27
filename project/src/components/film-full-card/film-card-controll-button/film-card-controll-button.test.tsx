@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen} from '@testing-library/react';
 import { generatePath } from 'react-router-dom';
 import { RoutePath } from '../../routers/app-router/config/router-config';
