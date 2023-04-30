@@ -26,8 +26,17 @@ const MainFilmCard = () => {
   const favoriteFilm = useAppSelector(getFilm);
   const favoriteListCounter = useAppSelector(getFavoriteListFilm).length;
   const navigate = useNavigate();
-  const {id} = film;
 
+  useEffect(() => {
+    dispatch(fetchPromoFilmAction());
+    dispatch(fetchFavoriteListAction());
+  }, [favoriteFilm]);
+
+  if (!film) {
+    return null;
+  }
+
+  const {id} = film;
 
   const handleFavoriteFilmAdd = () => {
     if (authStatus !== AuthorizationStatus.Auth) {
@@ -40,15 +49,6 @@ const MainFilmCard = () => {
   const handleFavoriteFilmRemove = () => {
     dispatch(changeFavoriteFilmStatusAction({id, type: ChangeType.Remove}));
   };
-
-  useEffect(() => {
-    dispatch(fetchPromoFilmAction());
-    dispatch(fetchFavoriteListAction());
-  }, [favoriteFilm]);
-
-  if (!film) {
-    return null;
-  }
 
   return (
     <section className="film-card">
