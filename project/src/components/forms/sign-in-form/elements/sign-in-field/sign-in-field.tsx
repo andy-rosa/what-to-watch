@@ -3,18 +3,20 @@ import {InputHTMLAttributes} from 'react';
 interface SignInFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   entityForm: string;
+  error?: string;
 }
 
 const SignInField = ({
   label,
   type = 'text',
   entityForm,
+  error,
   ...otherProps
 }: SignInFieldProps) => {
   const inputName = `${entityForm}-${type}`;
 
   return (
-    <div className="sign-in__field">
+    <div className={`sign-in__field ${error ? 'sign-in__field--error' : ''}`}>
       <input
         className="sign-in__input"
         type={type}
