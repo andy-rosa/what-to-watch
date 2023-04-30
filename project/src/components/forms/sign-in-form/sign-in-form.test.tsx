@@ -31,7 +31,7 @@ describe('SignInForm', () => {
     const submitButton = screen.getByRole('button', { name: 'Sign in' });
 
     fireEvent.change(emailInput, { target: { value: 'test@test.com' } });
-    fireEvent.change(passwordInput, { target: { value: 'password' } });
+    fireEvent.change(passwordInput, { target: { value: 'password1' } });
     fireEvent.click(submitButton);
 
     expect(mockDispatch).toHaveBeenCalledWith(loginAction({ email: 'test@test.com', password: 'password' }));
