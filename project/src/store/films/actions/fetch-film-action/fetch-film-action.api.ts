@@ -4,14 +4,28 @@ import {AxiosInstance} from 'axios';
 
 export const fetchFilmAction = createAsyncThunk<
   Films,
-  string,
+  {
+    id: string;
+    navigate: () => void;
+      },
   {
     extra: AxiosInstance;
   }
->(
-  'films/fetchFilm',
-  async (id, { extra: api}) => {
-    const response = await api.get<Films>(`films/${id}`);
-    return response.data;
-  }
-);
+      >(
+      'films/fetchFilm',
+      async ({id, navigate}, { extra: api, rejectWithValue}) => {
+        let correctId = true;
+
+        try {
+          const response = await api.get<Films>(`films/${id}`);
+          return response.data;
+        } catch (error) {
+          correctId = false;
+          return rejectWithValue(error);
+        } finally {
+          if (!correctId) {
+            navigate();
+          }
+        }
+      }
+      );

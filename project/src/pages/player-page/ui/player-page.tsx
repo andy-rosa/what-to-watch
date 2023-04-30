@@ -14,7 +14,12 @@ const PlayerPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(fetchFilmAction(id as string));
+    dispatch(fetchFilmAction(({
+      id: id as string,
+      navigate: () => {
+        navigate('/not-found');
+      }
+    })));
   }, [id]);
 
   const film = useAppSelector(getFilm);

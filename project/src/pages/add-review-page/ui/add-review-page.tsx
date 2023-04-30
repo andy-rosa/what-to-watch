@@ -6,15 +6,21 @@ import {useAppSelector} from '../../../hooks/use-app-selector';
 import {getFilm} from '../../../store/films/selectors/get-film/get-film';
 import {fetchFilmAction} from '../../../store/films/actions/fetch-film-action/fetch-film-action.api';
 import { useAppDispatch } from '../../../hooks/use-app-dispatch';
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
 const AddReviewPage = () => {
   const film = useAppSelector(getFilm);
   const dispatch = useAppDispatch();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect( () => {
-    dispatch(fetchFilmAction(id as string));
+    dispatch(fetchFilmAction({
+      id: id as string,
+      navigate: () => {
+        navigate('/not-found');
+      }
+    }));
   },[ id, dispatch ]);
 
   return (
