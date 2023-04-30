@@ -19,9 +19,19 @@ export const postReviewAction = createAsyncThunk<
   }
 >(
   'reviews/postReview',
-  async ({id, body: {comment, rating, navigate}}, { extra: api}) => {
-    const response = await api.post<Reviews[]>(`comments/${id}`, {comment, rating});
-    navigate();
-    return response.data;
+  async ({id, body: {comment, rating, navigate}}, { extra: api, rejectWithValue}) => {
+    let isFinish = true;
+
+    try {
+      const response = await api.post<Reviews[]>(`comments/${id}`, {comment, rating});
+      return response.data;
+    } catch (error) {
+      isFinish = false;
+      return rejectWithValue(error);
+    } finally {
+      if (isFinish) {
+        navigate();
+      }
+    }
   }
 );
