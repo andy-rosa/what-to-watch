@@ -16,7 +16,6 @@ describe('getFilteredFilms', () => {
       }
     };
 
-
     const result = getFilteredFilms(state as RootState);
 
     expect(result).toEqual(state.films?.films);
@@ -32,12 +31,8 @@ describe('getFilteredFilms', () => {
       }
     };
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const result = getFilteredFilms(state);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    expect(result).toEqual([state.films.films[HORROR]]);
+    const result = getFilteredFilms(state as RootState);
+    expect(result).toEqual([state.films?.films?.[HORROR]]);
   });
 
   test('should return an empty array if there are no films that match the selected genre', () => {
@@ -49,9 +44,7 @@ describe('getFilteredFilms', () => {
       }
     };
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const result = getFilteredFilms(state);
+    const result = getFilteredFilms(state as RootState);
     expect(result).toEqual([]);
   });
 });

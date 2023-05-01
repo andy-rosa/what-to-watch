@@ -6,7 +6,7 @@ import { loginAction } from '../../../store/user/actions/login/login.api';
 import MockProviderWithComponent from '../../../hoc/mock-provider-with-component/mock-provider-with-component';
 import { useAppDispatch } from '../../../hooks/use-app-dispatch';
 import { useAppSelector } from '../../../hooks/use-app-selector';
-/* eslint-disable */
+import Mock = jest.Mock;
 
 jest.mock('../../../store/user/actions/login/login.api');
 jest.mock('../../../hooks/use-app-dispatch');
@@ -19,8 +19,8 @@ describe('SignInForm', () => {
 
   it('dispatches login action when form is submitted with valid inputs', () => {
     const mockDispatch = jest.fn();
-    (useAppDispatch as any).mockReturnValue(mockDispatch);
-    (useAppSelector as any).mockReturnValue(AuthorizationStatus.NoAuth);
+    (useAppDispatch as Mock).mockReturnValue(mockDispatch);
+    (useAppSelector as Mock).mockReturnValue(AuthorizationStatus.NoAuth);
 
     const signInForm = new MockProviderWithComponent(<SignInForm />);
     signInForm.path = RoutePath.sign_in;

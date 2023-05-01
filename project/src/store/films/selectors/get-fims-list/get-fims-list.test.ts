@@ -1,5 +1,4 @@
 import {DeepPartial} from '@reduxjs/toolkit';
-import {FilmsState} from '../../../../types/films';
 import {generateFilmsListMock} from '../../mock-test/generate-films-list-mock';
 import { getFilmsList } from './get-fims-list';
 import {RootState} from '../../../../types/root-state';
@@ -12,9 +11,7 @@ describe('getFilmsList selector', () => {
           films: generateFilmsListMock(3)
         }
     };
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const filmsList = getFilmsList(state) as DeepPartial<FilmsState>;
+    const filmsList = getFilmsList(state as RootState);
     expect(filmsList).toHaveLength(3);
     expect(filmsList).toEqual([
       { id: 0, name: 'Film 0' },
@@ -30,9 +27,7 @@ describe('getFilmsList selector', () => {
           films: []
         }
     };
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const filmsList = getFilmsList(state);
+    const filmsList = getFilmsList(state as RootState);
     expect(filmsList).toEqual([]);
   });
 });

@@ -2,16 +2,22 @@ import userReducer from './user-slice';
 import {AuthorizationStatus, UserState} from '../../../types/user';
 import {checkAuthorization} from '../actions/check-authorization/check-authorization.api';
 import {generateUserMock} from '../mock-test/generate-user-mock';
-import {loginAction} from '../actions/login/login.api';
+import {loginAction, UserAuthPost} from '../actions/login/login.api';
 import {logoutAction} from '../actions/logout/logout.api';
 
 describe('userSlice reducer', () => {
   let initialState: UserState;
+  let userPost: UserAuthPost;
 
   beforeEach(() => {
     initialState = {
       authorizationStatus: AuthorizationStatus.Unknown,
       user: null
+    };
+
+    userPost = {
+      email: '12dw@mail.ru',
+      password: '12a'
     };
   });
 
@@ -27,9 +33,7 @@ describe('userSlice reducer', () => {
         user: payload,
       };
       expect(userReducer(
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        initialState, checkAuthorization.fulfilled(payload)
+        initialState, checkAuthorization.fulfilled(payload, 'test', undefined)
       )).toEqual(expectedState);
     });
 
@@ -39,9 +43,7 @@ describe('userSlice reducer', () => {
         user: null,
       };
       expect(userReducer(
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        initialState, checkAuthorization.rejected(new Error('error'))
+        initialState, checkAuthorization.rejected(new Error('error'), 'test', undefined)
       )).toEqual(expectedState);
     });
   });
@@ -54,9 +56,7 @@ describe('userSlice reducer', () => {
         user: payload,
       };
       expect(userReducer(
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        initialState, loginAction.fulfilled(payload)
+        initialState, loginAction.fulfilled(payload, 'test', userPost)
       )).toEqual(expectedState);
     });
 
@@ -66,23 +66,20 @@ describe('userSlice reducer', () => {
         user: null,
       };
       expect(userReducer(
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        initialState, loginAction.rejected(new Error('error'))
+        initialState, loginAction.rejected(new Error('error'), 'test', userPost)
       )).toEqual(expectedState);
     });
   });
 
   describe('logout', () => {
+    const _: void = undefined;
     it('should handle logoutAction.fulfilled', () => {
       const expectedState: UserState = {
         authorizationStatus: AuthorizationStatus.NoAuth,
         user: null,
       };
       expect(userReducer(
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        initialState, logoutAction.fulfilled()
+        initialState, logoutAction.fulfilled(_, 'test', undefined)
       )).toEqual(expectedState);
     });
 
@@ -92,9 +89,7 @@ describe('userSlice reducer', () => {
         user: null,
       };
       expect(userReducer(
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        initialState, loginAction.rejected(new Error('error'))
+        initialState, loginAction.rejected(new Error('error'), 'test', userPost)
       )).toEqual(expectedState);
     });
   });

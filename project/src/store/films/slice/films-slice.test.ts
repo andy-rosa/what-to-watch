@@ -30,9 +30,7 @@ describe('filmsSlice reducer', () => {
       isLoading: false,
     };
     expect(filmsReducer(
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      initialState, fetchFilmsAction.fulfilled(payload)
+      initialState, fetchFilmsAction.fulfilled(payload, '', undefined)
     )).toEqual(expectedState);
   });
 
@@ -42,9 +40,7 @@ describe('filmsSlice reducer', () => {
       isLoading: true,
     };
     expect(filmsReducer(
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      initialState, fetchFilmsAction.pending(undefined, undefined))
+      initialState, fetchFilmsAction.pending('',undefined))
     ).toEqual(expectedState);
   });
 
@@ -56,9 +52,7 @@ describe('filmsSlice reducer', () => {
       isLoading: false,
     };
     expect(filmsReducer(
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      initialState, fetchFilmsSimilarAction.fulfilled(payload))
+      initialState, fetchFilmsSimilarAction.fulfilled(payload, '', ''))
     ).toEqual(expectedState);
   });
 
@@ -68,9 +62,7 @@ describe('filmsSlice reducer', () => {
       isLoading: true,
     };
     expect(filmsReducer(
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      initialState, fetchFilmsSimilarAction.pending(undefined, undefined))
+      initialState, fetchFilmsSimilarAction.pending('', ''))
     ).toEqual(expectedState);
   });
 });
