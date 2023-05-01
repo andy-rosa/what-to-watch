@@ -1,12 +1,12 @@
-import React, {Suspense, useEffect} from 'react';
+import {Suspense, useEffect} from 'react';
 import Header from '../../headers/header';
 import FilmCardDesc from '../../film-full-card/film-card-desc/film-card-desc';
 import FilmCardPoster from '../../film-full-card/film-card-poster/film-card-poster';
 import FilmCardButton from '../../film-full-card/film-card-controll-button/film-card-controll-button';
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import Loader from '../../loader/loader';
-import {useAppDispatch} from '../../../hooks/useAppDispatch';
-import {useAppSelector} from '../../../hooks/useAppSelector';
+import {useAppDispatch} from '../../../hooks/use-app-dispatch';
+import {useAppSelector} from '../../../hooks/use-app-selector';
 import {getFilm} from '../../../store/films/selectors/get-film/get-film';
 import {fetchFilmAction} from '../../../store/films/actions/fetch-film-action/fetch-film-action.api';
 import {fetchReviewsAction} from '../../../store/reviews/actions/fetch-reviews/fetch-reviews-action.api';
@@ -15,9 +15,15 @@ const FilmCardFull = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const film = useAppSelector(getFilm);
+  const navigate = useNavigate();
 
   useEffect( () => {
-    dispatch(fetchFilmAction(id as string));
+    dispatch(fetchFilmAction(({
+      id: id as string,
+      navigate: () => {
+        navigate('/not-found');
+      }
+    })));
     dispatch(fetchReviewsAction(id as string));
   },[ id, dispatch ]);
 

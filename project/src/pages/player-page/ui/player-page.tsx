@@ -1,8 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {generatePath, useNavigate, useParams} from 'react-router-dom';
-import { useAppSelector } from '../../../hooks/useAppSelector';
+import { useAppSelector } from '../../../hooks/use-app-selector';
 import {getFilm} from '../../../store/films/selectors/get-film/get-film';
-import {useAppDispatch} from '../../../hooks/useAppDispatch';
+import {useAppDispatch} from '../../../hooks/use-app-dispatch';
 import {fetchFilmAction} from '../../../store/films/actions/fetch-film-action/fetch-film-action.api';
 import {RoutePath} from '../../../components/routers/app-router/config/router-config';
 import TimePlayer from '../../../components/player/time-player/time-player';
@@ -14,7 +14,12 @@ const PlayerPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(fetchFilmAction(id as string));
+    dispatch(fetchFilmAction(({
+      id: id as string,
+      navigate: () => {
+        navigate('/not-found');
+      }
+    })));
   }, [id]);
 
   const film = useAppSelector(getFilm);

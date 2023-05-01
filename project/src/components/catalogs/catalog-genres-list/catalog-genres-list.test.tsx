@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import CatalogGenresList from './catalog-genres-list';
 import {GenreName} from '../../../types/genre';

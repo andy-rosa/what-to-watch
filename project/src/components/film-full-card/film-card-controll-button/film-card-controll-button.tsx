@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import {generatePath, Link, useNavigate} from 'react-router-dom';
 import {RoutePath} from '../../routers/app-router/config/router-config';
 import {Films} from '../../../types/films';
-import {useAppSelector} from '../../../hooks/useAppSelector';
+import {useAppSelector} from '../../../hooks/use-app-selector';
 import {getUserAuthStatus} from '../../../store/user/selectors/get-user-auth-status/get-user-auth-status';
 import {AuthorizationStatus} from '../../../types/user';
-import {useAppDispatch} from '../../../hooks/useAppDispatch';
+import {useAppDispatch} from '../../../hooks/use-app-dispatch';
 import { changeFavoriteFilmStatusAction, ChangeType } from '../../../store/films/actions/change-favorite-film-status-action/change-favorite-film-status-action.api';
 import {getFilmFavoriteStatus} from '../../../store/films/selectors/get-film-favorite-status/get-film-favorite-status';
 import {getFavoriteListFilm} from '../../../store/films/selectors/get-favorite-list-film/get-favorite-list-film';

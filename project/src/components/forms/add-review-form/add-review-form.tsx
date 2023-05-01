@@ -1,10 +1,13 @@
-import React, {memo, SyntheticEvent, useCallback, useState} from 'react';
+import {FormEvent, memo, SyntheticEvent, useCallback, useState} from 'react';
 import ReviewText from './elements/review-text/review-text';
 import ReviewRating from './elements/review-rating/review-rating';
-import {useAppDispatch} from '../../../hooks/useAppDispatch';
-import {useParams} from 'react-router-dom';
+import {useAppDispatch} from '../../../hooks/use-app-dispatch';
+import {generatePath, useNavigate, useParams} from 'react-router-dom';
 import {postReviewAction} from '../../../store/reviews/actions/post-review/post-review-action.api';
 import TextError from '../../text-error/text-error';
+import {RoutePath} from '../../routers/app-router/config/router-config';
+import {useAppSelector} from '../../../hooks/use-app-selector';
+import {getReviewLoadingStatus} from '../../../store/reviews/selectors/get-review-loading-status/get-review-loading-status';
 
 
 enum Error {
@@ -17,20 +20,23 @@ enum Error {
 const AddReviewForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const {id} = useParams();
+  const navigate = useNavigate();
+  const isLoading = useAppSelector(getReviewLoadingStatus);
 
-  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     dispatch(postReviewAction({
       id: id as string,
       body: {
         rating: Number(rating),
-        comment: text
+        comment: text,
+        navigate: () => navigate(generatePath(RoutePath.film, {id}))
       }
     }));
   };
   const [text, setText] = useState('');
   const [rating, setRating] = useState('');
-  const [error, setError] = React.useState({
+  const [error, setError] = useState({
     comment: Error.None
   });
 
@@ -71,7 +77,7 @@ const AddReviewForm = (): JSX.Element => {
     <div className="add-review">
       <form action="#" className="add-review__form" onSubmit={handleSubmit}>
         <ReviewRating onChange={changeRatingHandler}/>
-        { (!error.comment && rating)
+        { (!error.comment && rating && !isLoading)
           ? <ReviewText onChange={changeTextHandler} value={text} />
           : <ReviewText onChange={changeTextHandler} value={text} disabledButton/>}
         { error.comment !== Error.None && <TextError>{error.comment}</TextError> }

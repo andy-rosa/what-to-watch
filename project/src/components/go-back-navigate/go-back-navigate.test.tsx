@@ -1,7 +1,6 @@
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import GoBackNavigate from './go-back-navigate';
-/* eslint-disable */
+import Mock = jest.Mock;
 
 jest.mock('react-router-dom', () => ({
   useNavigate: jest.fn(),
@@ -15,7 +14,7 @@ describe('GoBackNavigate', () => {
 
   it('navigates to the previous page when the "Go Back" button is clicked', () => {
     const navigateMock = jest.fn();
-    const useNavigateMock = jest.requireMock('react-router-dom').useNavigate;
+    const useNavigateMock = jest.requireMock<{useNavigate: () => void}>('react-router-dom').useNavigate as Mock;
     useNavigateMock.mockReturnValue(navigateMock);
 
     render(<GoBackNavigate />);

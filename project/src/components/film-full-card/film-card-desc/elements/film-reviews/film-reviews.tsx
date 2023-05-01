@@ -1,7 +1,6 @@
-import React from 'react';
 import {Reviews} from '../../../../../types/reviews';
 import FilmPost from './elements/film-post/film-post';
-import {useAppSelector} from '../../../../../hooks/useAppSelector';
+import {useAppSelector} from '../../../../../hooks/use-app-selector';
 import {getReviewsFilm} from '../../../../../store/reviews/selectors/get-reviews-film/get-reviews-film';
 
 const FilmReviews = () => {

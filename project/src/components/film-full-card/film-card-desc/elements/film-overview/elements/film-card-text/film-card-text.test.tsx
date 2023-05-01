@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import FilmCardText, { FilmCardTextProps } from './film-card-text';
 import {Films} from '../../../../../../../types/films';

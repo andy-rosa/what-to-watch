@@ -1,6 +1,4 @@
-import React from 'react';
 import {transformDurationVideo} from '../../../helpers/transform-duration-video';
-import cls from './time-player.module.css';
 
 interface TimePlayerProps {
   duration: number;
@@ -14,8 +12,8 @@ const TimePlayer = ({duration, currentTime}: TimePlayerProps) => {
   return (
     <div className="player__controls-row">
       <div className="player__time">
-        <progress className={`player__progress ${cls.bar}`} value={progress} max="100"></progress>
-        <div className={`player__toggler ${cls.toggler}`} style={{left: `${progress}%`}}>Toggler</div>
+        <progress className={'player__progress'} value={`${progress}`} max="100"></progress>
+        <div className={'player__toggler'} style={{left: `${progress}%`}}>Toggler</div>
       </div>
       <div className="player__time-value">{durationTime}</div>
     </div>

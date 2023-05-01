@@ -10,9 +10,6 @@ describe('get-user-auth-status.test', () => {
         authorizationStatus: AuthorizationStatus.Unknown
       },
     };
-    // нужна помощь с типизацией
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    expect(getUserAuthStatus(state)).toBe(AuthorizationStatus.Unknown);
+    expect(getUserAuthStatus(state as RootState)).toBe(AuthorizationStatus.Unknown);
   });
 });

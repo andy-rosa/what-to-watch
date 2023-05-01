@@ -1,4 +1,3 @@
-import React from 'react';
 import {FilmCardProps} from '../../film-card';
 
 const CardPoster = ({posterImage, name}: Pick<FilmCardProps, 'posterImage' | 'name'>) => (

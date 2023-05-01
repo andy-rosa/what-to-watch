@@ -1,4 +1,3 @@
-import React from 'react';
 import cls from './go-back-navigate.module.css';
 import {useNavigate} from 'react-router-dom';
 import {RoutePath} from '../routers/app-router/config/router-config';

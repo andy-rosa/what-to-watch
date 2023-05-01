@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {generatePath, Link} from 'react-router-dom';
 import {Films} from '../../types/films';
 import cls from './film-card.module.css';

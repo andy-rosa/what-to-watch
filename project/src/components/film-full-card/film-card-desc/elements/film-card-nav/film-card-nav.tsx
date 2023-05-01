@@ -1,4 +1,4 @@
-import React, {SyntheticEvent} from 'react';
+import {SyntheticEvent} from 'react';
 import { ActiveDescription } from '../../film-card-desc';
 
 interface FilmCardNavProps {

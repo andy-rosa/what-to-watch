@@ -28,6 +28,9 @@ const reviewsSlice = createSlice({
       })
       .addCase(postReviewAction.pending, (state) => {
         state.isLoading = true;
+      })
+      .addCase(postReviewAction.rejected, (state, action) => {
+        state.isLoading = false;
       });
   }
 });

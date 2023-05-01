@@ -1,4 +1,4 @@
-import React, {ChangeEvent, memo} from 'react';
+import {ChangeEvent, memo} from 'react';
 
 export interface ReviewRatingItemProps {
   value: number;

@@ -1,8 +1,7 @@
-import React from 'react';
 import FilmCardRating, {FilmCardRatingProps} from './elements/film-card-rating/film-card-rating';
 import FilmCardText, {FilmCardTextProps} from './elements/film-card-text/film-card-text';
 import {Films} from '../../../../../types/films';
-import {useAppSelector} from '../../../../../hooks/useAppSelector';
+import {useAppSelector} from '../../../../../hooks/use-app-selector';
 import {getFilm} from '../../../../../store/films/selectors/get-film/get-film';
 
 type FilmOverviewPick = Pick<Films, FilmCardRatingProps | FilmCardTextProps>

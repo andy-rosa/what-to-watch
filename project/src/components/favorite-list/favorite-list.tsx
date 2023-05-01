@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { useAppSelector } from '../../hooks/useAppSelector';
+import { useEffect, useState } from 'react';
+import { useAppDispatch } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import { fetchFavoriteListAction } from '../../store/films/actions/fetch-favorite-list-action/fetch-favorite-list-action.api';
 import FilmCard, { FilmCardProps } from '../film-card/film-card';
 import { STEP } from '../sections/catalog/catalog';
@@ -10,7 +10,7 @@ import {getFavoriteListFilm} from '../../store/films/selectors/get-favorite-list
 const FavoriteList = () => {
   const films = useAppSelector(getFavoriteListFilm);
   const dispatch = useAppDispatch();
-  const [range, setRange] = React.useState<number>(STEP);
+  const [range, setRange] = useState<number>(STEP);
 
   const handleClick = () => {
     setRange(range + STEP);

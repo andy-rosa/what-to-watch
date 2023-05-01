@@ -1,8 +1,8 @@
-import React, {SyntheticEvent} from 'react';
+import {SyntheticEvent} from 'react';
 import {Link} from 'react-router-dom';
-import { useAppDispatch } from '../../../../hooks/useAppDispatch';
+import { useAppDispatch } from '../../../../hooks/use-app-dispatch';
 import { RoutePath } from '../../../routers/app-router/config/router-config';
-import {useAppSelector} from '../../../../hooks/useAppSelector';
+import {useAppSelector} from '../../../../hooks/use-app-selector';
 import {getUserAvatar} from '../../../../store/user/selectors/get-user-avatar/get-user-avatar';
 import { logoutAction } from '../../../../store/user/actions/logout/logout.api';
 

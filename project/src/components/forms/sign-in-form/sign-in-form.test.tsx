@@ -4,13 +4,13 @@ import { AuthorizationStatus } from '../../../types/user';
 import { RoutePath } from '../../routers/app-router/config/router-config';
 import { loginAction } from '../../../store/user/actions/login/login.api';
 import MockProviderWithComponent from '../../../hoc/mock-provider-with-component/mock-provider-with-component';
-import { useAppDispatch } from '../../../hooks/useAppDispatch';
-import { useAppSelector } from '../../../hooks/useAppSelector';
-/* eslint-disable */
+import { useAppDispatch } from '../../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../../hooks/use-app-selector';
+import Mock = jest.Mock;
 
 jest.mock('../../../store/user/actions/login/login.api');
-jest.mock('../../../hooks/useAppDispatch');
-jest.mock('../../../hooks/useAppSelector');
+jest.mock('../../../hooks/use-app-dispatch');
+jest.mock('../../../hooks/use-app-selector');
 
 describe('SignInForm', () => {
   beforeEach(() => {
@@ -19,8 +19,8 @@ describe('SignInForm', () => {
 
   it('dispatches login action when form is submitted with valid inputs', () => {
     const mockDispatch = jest.fn();
-    (useAppDispatch as any).mockReturnValue(mockDispatch);
-    (useAppSelector as any).mockReturnValue(AuthorizationStatus.NoAuth);
+    (useAppDispatch as Mock).mockReturnValue(mockDispatch);
+    (useAppSelector as Mock).mockReturnValue(AuthorizationStatus.NoAuth);
 
     const signInForm = new MockProviderWithComponent(<SignInForm />);
     signInForm.path = RoutePath.sign_in;
@@ -31,7 +31,7 @@ describe('SignInForm', () => {
     const submitButton = screen.getByRole('button', { name: 'Sign in' });
 
     fireEvent.change(emailInput, { target: { value: 'test@test.com' } });
-    fireEvent.change(passwordInput, { target: { value: 'password' } });
+    fireEvent.change(passwordInput, { target: { value: 'password1' } });
     fireEvent.click(submitButton);
 
     expect(mockDispatch).toHaveBeenCalledWith(loginAction({ email: 'test@test.com', password: 'password' }));

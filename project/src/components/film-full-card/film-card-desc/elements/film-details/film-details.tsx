@@ -1,7 +1,6 @@
-import React from 'react';
 import {Films} from '../../../../../types/films';
 import {transformDurationTime} from '../../../../../helpers/transform-duration-time';
-import {useAppSelector} from '../../../../../hooks/useAppSelector';
+import {useAppSelector} from '../../../../../hooks/use-app-selector';
 import {getFilm} from '../../../../../store/films/selectors/get-film/get-film';
 
 type FilmDetailsPick = Pick<Films, 'director' | 'starring' | 'runTime' | 'genre' | 'released'>

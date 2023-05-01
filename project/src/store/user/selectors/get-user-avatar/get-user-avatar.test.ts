@@ -10,14 +10,8 @@ describe('get-user-avatar.test', () => {
         user: generateUserMock()
       }
     };
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     expect(
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      getUserAvatar(state)
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-    ).toEqual(state.user.user.avatarUrl);
+      getUserAvatar(state as RootState)
+    ).toEqual(state.user?.user?.avatarUrl);
   });
 });
