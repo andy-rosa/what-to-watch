@@ -6,7 +6,7 @@ import {ReactNode} from 'react';
 
 class MockProviderWithComponent {
   protected _path = RoutePath.main;
-  protected store = store;
+  protected _store = store;
   protected component;
 
   constructor(component: ReactNode) {
@@ -22,9 +22,17 @@ class MockProviderWithComponent {
     return this._path;
   }
 
+  get store() {
+    return this._store;
+  }
+
+  set store(newStore) {
+    this._store = newStore;
+  }
+
   public renderTest() {
     return (
-      <Provider store={this.store}>
+      <Provider store={this._store}>
         <MemoryRouter initialEntries={[this.path]} >
           <Routes>
             <Route path={this.path} element={this.component} />

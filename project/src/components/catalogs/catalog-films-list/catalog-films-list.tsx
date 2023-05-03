@@ -58,7 +58,14 @@ const CatalogFilmsList = ({range = STEP, handleClick}: CatalogFilmsListProps) =>
       {
         range < films.length &&
         <div className="catalog__more">
-          <button className="catalog__button" type="button" onClick={handleClick}>Show more</button>
+          <button
+            className="catalog__button"
+            type="button"
+            onClick={handleClick}
+            data-testid={'btn-show-more'}
+          >
+            Show more
+          </button>
         </div>
       }
     </>
